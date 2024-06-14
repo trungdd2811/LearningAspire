@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\0.1 Commons\LearningAspire.Commons\LearningAspire.Commons.csproj" />
+  </ItemGroup>
+
 </Project>

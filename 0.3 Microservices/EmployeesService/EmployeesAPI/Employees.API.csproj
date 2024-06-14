@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\0.2 Aspire Dashboard\LearningAspire.ServiceDefaults\LearningAspire.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\Employees.Domain\Employees.Domain.csproj" />
+    <ProjectReference Include="..\Employees.Infrastructure\Employees.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
