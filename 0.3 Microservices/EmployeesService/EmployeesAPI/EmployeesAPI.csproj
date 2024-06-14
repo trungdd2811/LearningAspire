@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\0.2 Aspire Dashboard\LearningAspire.ServiceDefaults\LearningAspire.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\..\..\0.2 Aspire Dashboard\LearningAspire.ServiceDefaults\LearningAspire.ServiceDefaults.csproj" />
   </ItemGroup>
 
 </Project>

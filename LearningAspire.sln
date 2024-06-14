@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.4 UIs", "0.4 UIs", "{440B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.5 Tests", "0.5 Tests", "{78BAC0AA-B095-488C-9727-FE229161EEDB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EmployeesAPI", "EmployeesAPI", "{7B02F14D-F1DC-4478-B0E3-D800F466FE33}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EmployeesService", "EmployeesService", "{7B02F14D-F1DC-4478-B0E3-D800F466FE33}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningAspire.Web", "0.4 UIs\LearningAspire.Web\LearningAspire.Web.csproj", "{C174D7B3-EC3E-49E5-87D1-341BA8441209}"
 EndProject
@@ -26,7 +26,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningAspire.Tests", "0.5
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningAspire.Commons", "0.1 Commons\LearningAspire.Commons\LearningAspire.Commons.csproj", "{F780F81D-E1B1-4893-B66F-D116C160608D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeesAPI", "0.3 Microservices\EmployeesAPI\EmployeesAPI.csproj", "{BB6449D2-53E4-40A8-A374-AD3A66DA6164}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeesAPI", "0.3 Microservices\EmployeesService\EmployeesAPI\EmployeesAPI.csproj", "{BB6449D2-53E4-40A8-A374-AD3A66DA6164}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
