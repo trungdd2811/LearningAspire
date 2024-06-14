@@ -10,7 +10,8 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "DOTNET_ENVIRONMENT": "Development",
         "DOTNET_DASHBOARD_OTLP_ENDPOINT_URL": "https://localhost:21005",
-        "DOTNET_RESOURCE_SERVICE_ENDPOINT_URL": "https://localhost:22061"
+        "DOTNET_RESOURCE_SERVICE_ENDPOINT_URL": "https://localhost:22061",
+        //"OTEL_EXPORTER_OTLP_ENDPOINT": "http://localhost:3000"
       }
     },
     "http": {
@@ -18,12 +19,13 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "applicationUrl": "http://localhost:15137",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "DOTNET_ENVIRONMENT": "Development",
-        "DOTNET_DASHBOARD_OTLP_ENDPOINT_URL": "http://localhost:19039",
-        "DOTNET_RESOURCE_SERVICE_ENDPOINT_URL": "http://localhost:20087"
-      }
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development",
+            "DOTNET_ENVIRONMENT": "Development",
+            "DOTNET_DASHBOARD_OTLP_ENDPOINT_URL": "http://localhost:19039",
+            "DOTNET_RESOURCE_SERVICE_ENDPOINT_URL": "http://localhost:20087",
+            //"OTEL_EXPORTER_OTLP_ENDPOINT": "http://localhost:3000"
+        }
     }
   }
 }
