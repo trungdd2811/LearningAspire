@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\0.1 Commons\LearningAspire.Commons\LearningAspire.Commons.csproj" IsAspireProjectResource="false" />
-    <ProjectReference Include="..\..\0.3 Microservices\EmployeesService\EmployeesAPI\EmployeesAPI.csproj" />
+    <ProjectReference Include="..\..\0.3 Microservices\EmployeesService\EmployeesAPI\Employees.API.csproj" />
     <ProjectReference Include="..\..\0.3 Microservices\LearningAspire.ApiService\LearningAspire.ApiService.csproj" />
     <ProjectReference Include="..\..\0.4 UIs\LearningAspire.Web\LearningAspire.Web.csproj" />
   </ItemGroup>

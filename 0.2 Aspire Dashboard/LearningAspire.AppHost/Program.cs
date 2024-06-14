@@ -21,7 +21,7 @@ if (!isDevelopment)
 var apiService = builder.AddProject<Projects.LearningAspire_ApiService>(Constants.ApiService)
     .WithReplicas(2);
 
-var employeesService = builder.AddProject<Projects.EmployeesAPI>(Constants.EmployeesService)
+var employeesService = builder.AddProject<Projects.Employees_API>(Constants.EmployeesService)
     .WithReplicas(2);
 
 var webFrontEnd = builder.AddProject<Projects.LearningAspire_Web>(Constants.WebFrontend)
