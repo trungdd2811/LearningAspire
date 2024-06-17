@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,6 @@ namespace LearningAspire.Commons.Domain.SeedWork
     public interface IUnitOfWork : IDisposable
     {
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
-        Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default);
+        Task<bool> SaveEntitiesAsync(IMediator mediator, CancellationToken cancellationToken = default);
     }
 }
