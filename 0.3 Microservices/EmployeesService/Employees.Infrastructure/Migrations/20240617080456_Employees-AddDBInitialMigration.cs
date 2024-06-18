@@ -5,7 +5,7 @@
 namespace Employees.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class EmployeesAddIntialMigration : Migration
+    public partial class EmployeesAddDBInitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,7 +16,6 @@ namespace Employees.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IdentityGuid = table.Column<string>(type: "nvarchar(36)", maxLength: 36, nullable: false),
                     Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
                 },
                 constraints: table =>

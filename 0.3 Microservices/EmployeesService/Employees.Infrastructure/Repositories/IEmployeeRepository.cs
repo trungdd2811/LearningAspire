@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 public interface IEmployeeRepository : IRepository<Employee>
 {
-    Task<Employee> GetByIdAsync(Guid id);
+    Task<Employee> GetByIdAsync(int id);
     Task<IEnumerable<Employee>> GetAllAsync();
-    Task DeleteAsync(Guid id);
+    Task DeleteAsync(int id);
 }
 

@@ -1,11 +1,11 @@
 @EmployeesAPI_HostAddress = http://localhost:5276
 
-GET {{EmployeesAPI_HostAddress}}/todos/
+GET {{EmployeesAPI_HostAddress}}/api/employees
 Accept: application/json
 
 ###
 
-GET {{EmployeesAPI_HostAddress}}/todos/1
+GET {{EmployeesAPI_HostAddress}}/api/employees/1
 Accept: application/json
 
 ###

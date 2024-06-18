@@ -12,10 +12,6 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
         // Set the primary key
         builder.HasKey(e => e.Id);
 
-        // Set the property configurations
-        builder.Property(e => e.IdentityGuid)
-            .IsRequired()
-            .HasMaxLength(36); // Assuming GUID is used and stored as string
 
         builder.Property(e => e.Name)
             .IsRequired()

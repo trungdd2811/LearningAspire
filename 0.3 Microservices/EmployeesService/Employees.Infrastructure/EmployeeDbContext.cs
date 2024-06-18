@@ -6,10 +6,16 @@ using Microsoft.EntityFrameworkCore;
 public class EmployeeDbContext : DbContext, IUnitOfWork
 {
     public DbSet<Employee> Employees { get; set; }
-
-    public EmployeeDbContext(DbContextOptions<EmployeeDbContext> options)
+    private IMediator _mediator;
+    public EmployeeDbContext(IMediator mediator, DbContextOptions<EmployeeDbContext> options)
         : base(options)
     {
+#if !DEBUG
+        _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+#else
+        _mediator = mediator;//only run this code when generating the EF Core migrations in design mode
+#endif
+
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -19,7 +25,7 @@ public class EmployeeDbContext : DbContext, IUnitOfWork
         // Apply configurations
         modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
     }
-    public async Task<bool> SaveEntitiesAsync(IMediator mediator, CancellationToken cancellationToken = default)
+    public async Task<bool> SaveEntitiesAsync( CancellationToken cancellationToken = default)
     {
         // Dispatch Domain Events collection. 
         // Choices:
@@ -28,7 +34,7 @@ public class EmployeeDbContext : DbContext, IUnitOfWork
         // B) Right AFTER committing data (EF SaveChanges) into the DB will make multiple transactions. 
         // You will need to handle eventual consistency and compensatory actions in case of failures in any of the Handlers. 
 
-        await mediator.DispatchDomainEventsAsync(this);
+        await _mediator.DispatchDomainEventsAsync(this);
 
         // After executing this line all the changes (from the Command Handler and Domain Event Handlers) 
         // performed through the DbContext will be committed

@@ -6,8 +6,8 @@ var builder = DistributedApplication.CreateBuilder(args);
 #region add components to aspire orchestrator 
 var insights = builder.AddAzureApplicationInsights(Constants.MyAspireApp);
 var cache = builder.AddRedis(Constants.RedisCache);
-var sqlServer = builder.AddSqlServer(Constants.SqlServer);
-sqlServer.AddDatabase(Constants.SqlDB);
+var sqlServer = builder.AddSqlServer(Constants.EmployeesSQLServer);
+sqlServer.AddDatabase(Constants.EmployeesDB);
 
 var isDevelopment = builder.Environment.IsDevelopment();
 if (!isDevelopment)
@@ -20,6 +20,7 @@ if (!isDevelopment)
 #region add projects to aspire orchestrator 
 var apiService = builder.AddProject<Projects.LearningAspire_ApiService>(Constants.ApiService)
     .WithReplicas(2);
+
 
 var employeesService = builder.AddProject<Projects.Employees_API>(Constants.EmployeesService)
     .WithReplicas(2);

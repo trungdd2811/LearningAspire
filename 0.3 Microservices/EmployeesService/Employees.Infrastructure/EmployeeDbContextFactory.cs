@@ -11,6 +11,6 @@ public class EmployeeDbContextFactory : IDesignTimeDbContextFactory<EmployeeDbCo
         var connectionString = "";
         optionsBuilder.UseSqlServer(connectionString);
 
-        return new EmployeeDbContext(optionsBuilder.Options);
+        return new EmployeeDbContext(null, optionsBuilder.Options);
     }
 }

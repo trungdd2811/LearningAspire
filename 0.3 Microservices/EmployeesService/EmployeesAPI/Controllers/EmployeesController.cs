@@ -1,8 +1,4 @@
-using Employees.Domain.AggregateModel;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -21,31 +17,36 @@ public class EmployeesController : ControllerBase
         try
         {
             var employees = await _employeeRepository.GetAllAsync();
-            return Ok(employees);
+            return Ok(new ApiResponse<IEnumerable<Employee>>(employees));
         }
         catch (Exception ex)
         {
             // Log the exception details
-            return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
+            var emp = new Employee("Error retrieving data from the database");
+            var api = new ApiResponse<Employee>(emp, "no employee");
+            var result = JsonSerializer.Serialize(api, EmployeesJsonSerializerContext.Default.ApiResponseEmployee);
+            //return StatusCode(StatusCodes.Status500InternalServerError, result);
+            return StatusCode(StatusCodes.Status500InternalServerError, api);
+
         }
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(Guid id)
+    public async Task<IActionResult> GetById(int id)
     {
         try
         {
             var employee = await _employeeRepository.GetByIdAsync(id);
             if (employee == null)
             {
-                return NotFound($"Employee with Id = {id} not found.");
+                return NotFound(new ApiResponse<string>($"Employee with Id = {id} not found."));
             }
-            return Ok(employee);
+            return Ok(new ApiResponse<Employee>(employee));
         }
         catch (Exception ex)
         {
             // Log the exception details
-            return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
+            return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<string>("Error retrieving data from the database"));
         }
     }
 
@@ -54,38 +55,38 @@ public class EmployeesController : ControllerBase
     {
         if (employee == null)
         {
-            return BadRequest("Employee is null.");
+            return BadRequest(new ApiResponse<string>("Employee is null."));
         }
 
         if (!ModelState.IsValid)
         {
-            return BadRequest(ModelState);
+            return BadRequest(new ApiResponse<Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary>(ModelState));
         }
 
         try
         {
             await _employeeRepository.AddAsync(employee);
             await _employeeRepository.UnitOfWork.SaveEntitiesAsync();
-            return CreatedAtAction(nameof(GetById), new { id = employee.Id }, employee);
+            return CreatedAtAction(nameof(GetById), new { id = employee.Id }, new ApiResponse<Employee>(employee));
         }
         catch (Exception ex)
         {
             // Log the exception details
-            return StatusCode(StatusCodes.Status500InternalServerError, "Error creating new employee record");
+            return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<string>("Error creating new employee record"));
         }
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(Guid id, [FromBody] Employee employee)
+    public async Task<IActionResult> Update(int id, [FromBody] Employee employee)
     {
         if (employee == null || id != employee.Id)
         {
-            return BadRequest("Employee is null or ID mismatch.");
+            return BadRequest(new ApiResponse<string>("Employee is null or ID mismatch."));
         }
 
         if (!ModelState.IsValid)
         {
-            return BadRequest(ModelState);
+            return BadRequest(new ApiResponse<Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary>(ModelState));
         }
 
         try
@@ -97,12 +98,12 @@ public class EmployeesController : ControllerBase
         catch (Exception ex)
         {
             // Log the exception details
-            return StatusCode(StatusCodes.Status500InternalServerError, "Error updating employee record");
+            return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<string>("Error updating employee record"));
         }
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(Guid id)
+    public async Task<IActionResult> Delete(int id)
     {
         try
         {
@@ -113,7 +114,7 @@ public class EmployeesController : ControllerBase
         catch (Exception ex)
         {
             // Log the exception details
-            return StatusCode(StatusCodes.Status500InternalServerError, "Error deleting employee record");
+            return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse<string>("Error deleting employee record"));
         }
     }
 }

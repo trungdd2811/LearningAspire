@@ -5,10 +5,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Employees.Domain.AggregateModel
 {
+    [JsonSerializable(typeof(Employee))]
     /// <summary>
     /// Represents an employee entity.
     /// </summary>
@@ -18,7 +20,7 @@ namespace Employees.Domain.AggregateModel
         /// <summary>
         /// Gets the identity GUID of the employee.
         /// </summary>
-        public string IdentityGuid { get; private set; }
+        public override int Id { get; protected set; }
 
         /// <summary>
         /// Gets the name of the employee.
@@ -52,9 +54,8 @@ namespace Employees.Domain.AggregateModel
         /// </summary>
         /// <param name="identityGuid">The identity GUID of the employee.</param>
         /// <param name="name">The name of the employee.</param>
-        public Employee(string identityGuid, string name) : this()
+        public Employee(string name) : this()
         {
-            IdentityGuid = !string.IsNullOrWhiteSpace(identityGuid) ? identityGuid : throw new ArgumentNullException(nameof(identityGuid));
             Name = !string.IsNullOrWhiteSpace(name) ? name : throw new ArgumentNullException(nameof(name));
         }
 
@@ -64,7 +65,7 @@ namespace Employees.Domain.AggregateModel
         /// <param name="employee">The employee to add.</param>
         public void AddDirectReport(Employee employee)
         {
-            var existing = _directReports.SingleOrDefault(d => d.IdentityGuid == employee.IdentityGuid);
+            var existing = _directReports.SingleOrDefault(d => d.Id == employee.Id);
             if (existing != null)
             {
                 throw new InvalidOperationException("Employee already exists in direct reports.");
@@ -87,7 +88,7 @@ namespace Employees.Domain.AggregateModel
         /// <param name="employee">The employee to add.</param>
         public void AddManager(Employee employee)
         {
-            var existing = _managers.SingleOrDefault(m => m.IdentityGuid == employee.IdentityGuid);
+            var existing = _managers.SingleOrDefault(m => m.Id == employee.Id);
             if (existing != null)
             {
                 throw new InvalidOperationException("Employee already exists in managers.");
