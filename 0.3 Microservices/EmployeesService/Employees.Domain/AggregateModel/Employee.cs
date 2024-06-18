@@ -1,12 +1,7 @@
 ﻿using LearningAspire.Commons.Domain.SeedWork;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Employees.Domain.AggregateModel
 {
@@ -29,11 +24,13 @@ namespace Employees.Domain.AggregateModel
         private List<Employee> _directReports;
         private List<Employee> _managers;
 
+        [NotMapped]
         /// <summary>
         /// Gets the collection of direct reports of the employee.
         /// </summary>
         public IReadOnlyCollection<Employee> DirectReports => _directReports?.AsReadOnly();
 
+        [NotMapped]
         /// <summary>
         /// Gets the collection of managers of the employee.
         /// </summary>
@@ -105,7 +102,7 @@ namespace Employees.Domain.AggregateModel
             _managers.Remove(employee);
         }
 
-           
+
 
 
     }

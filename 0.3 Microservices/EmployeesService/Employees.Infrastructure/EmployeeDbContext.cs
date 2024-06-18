@@ -17,15 +17,15 @@ public class EmployeeDbContext : DbContext, IUnitOfWork
 #endif
 
     }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
         base.OnModelCreating(modelBuilder);
 
         // Apply configurations
         modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
     }
-    public async Task<bool> SaveEntitiesAsync( CancellationToken cancellationToken = default)
+    public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default)
     {
         // Dispatch Domain Events collection. 
         // Choices:
@@ -39,7 +39,7 @@ public class EmployeeDbContext : DbContext, IUnitOfWork
         // After executing this line all the changes (from the Command Handler and Domain Event Handlers) 
         // performed through the DbContext will be committed
 
-       // _ = await base.SaveChangesAsync(cancellationToken);
+        // _ = await base.SaveChangesAsync(cancellationToken);
 
         return true;
     }

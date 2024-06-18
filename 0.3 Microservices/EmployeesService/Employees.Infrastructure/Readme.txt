@@ -10,3 +10,6 @@
 run the command `Script-Migration -From PreviousMigrationName -To MigrationName`
 
 Noted: Please implement DBContextFactory to avoid the error "No parameterless constructor defined for this object."
+
+
+dotnet ef dbcontext optimize -o CompiledModels --namespace Employees.Infrastructure.CompiledModels

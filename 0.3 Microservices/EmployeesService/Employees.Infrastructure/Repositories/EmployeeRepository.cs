@@ -1,10 +1,6 @@
 using Employees.Domain.AggregateModel;
 using LearningAspire.Commons.Domain.SeedWork;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 public class EmployeeRepository : IEmployeeRepository
 {

@@ -22,7 +22,7 @@ public class EmployeesController : ControllerBase
         catch (Exception ex)
         {
             // Log the exception details
-            var emp = new Employee("Error retrieving data from the database");
+            var emp = new Employee(ex.Message);
             var api = new ApiResponse<Employee>(emp, "no employee");
             var result = JsonSerializer.Serialize(api, EmployeesJsonSerializerContext.Default.ApiResponseEmployee);
             //return StatusCode(StatusCodes.Status500InternalServerError, result);

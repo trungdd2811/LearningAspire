@@ -1,6 +1,6 @@
 ﻿namespace LearningAspire.Commons;
 
-public static class Constants 
+public static class Constants
 {
     public const string RedisCache = "redis-cache";
     public const string ApiService = "api-service";
@@ -13,4 +13,5 @@ public static class Constants
     public const string SqlDB = "learning-aspire-sqldb";
     public const string EmployeesSQLServer = "learning-aspire-sqlserver";
     public const string EmployeesDB = "employees-sqldb";
+    public const string EmployeesPostgreDB = "employees-postgredb";
 }
