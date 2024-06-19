@@ -36,7 +36,7 @@ var employeesDB = sqlServer.AddDatabase(Constants.EmployeesDB);
 
 #endregion
 
-#region add projects to aspire orchestrator 
+#region add components - project resources to aspire orchestrator 
 var apiService = builder.AddProject<Projects.LearningAspire_ApiService>(Constants.ApiService)
     .WithReplicas(1);
 
@@ -51,13 +51,15 @@ var webFrontEnd = builder.AddProject<Projects.LearningAspire_Web>(Constants.WebF
     .WithReference(apiService)
     .WithReference(employeesService)
     .WithReplicas(1);
-#endregion
 
 if (builder.ExecutionContext.IsPublishMode)
 {
     webFrontEnd.WithReference(insights);
     apiService.WithReference(insights);
 }
+
+#endregion
+
 
 
 builder.Build().Run();
