@@ -28,11 +28,17 @@ sqlServer.WithDataVolume(Constants.EmployeesSQLServer);
     var sqlPassword = builder.AddParameter("sql-password", secret: true);
     var sqlServer = builder.AddSqlServer(Constants.EmployeesSQLServer, password: sqlPassword, 1443);
     ```
-2. How to get the connection string from the container
-you can use the following code to get the connection string from the container
+2. How to get the connection string from the container:
+
+    You can use the following code to get the connection string from the container
 	```csharp
 	_context.Database.GetConnectionString(); #_context is your dbcontext_
     #output: "Server=127.0.0.1,1443;User ID=sa;Password=Trung123456;TrustServerCertificate=true;Database=employees-sqldb"
 	``` 
+
+    Or you can see the following images to get the necessary information which is used to connect the database
+
+    ![Aspire Host SQL Server Port](./Images/aspire-host-sqlserver-port.PNG)
+    ![Aspire Host SQL Server Connect](./Images/aspire-host-sqlserver-connect.PNG)
 
 ## See also
