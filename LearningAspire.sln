@@ -32,7 +32,20 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Employees.Domain", "0.3 Mic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Employees.Infrastructure", "0.3 Microservices\EmployeesService\Employees.Infrastructure\Employees.Infrastructure.csproj", "{D9FC29D1-FF51-42BD-A969-2190CC3628C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningAspire.EFCore.Common", "0.1 Commons\LearningAspire.EFCore.Common\LearningAspire.EFCore.Common.csproj", "{22B9927C-2F9B-49AF-82AE-A7C632639CA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningAspire.EFCore.Common", "0.1 Commons\LearningAspire.EFCore.Common\LearningAspire.EFCore.Common.csproj", "{22B9927C-2F9B-49AF-82AE-A7C632639CA9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5D570D2A-DB59-41CF-88DC-E1371B3AD4F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.6 Lessons Learnt", "0.6 Lessons Learnt", "{913A57C0-2C24-4649-9150-24AAE15F7F73}"
+	ProjectSection(SolutionItems) = preProject
+		Aspire - App Host (Orchestration).md = Aspire - App Host (Orchestration).md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{3B61D791-6DF9-4446-A904-62ECF1DAB711}"
+	ProjectSection(SolutionItems) = preProject
+		0.6 Lessons Learnt\Images\aspire-host-sqlserver-connect.PNG = 0.6 Lessons Learnt\Images\aspire-host-sqlserver-connect.PNG
+		0.6 Lessons Learnt\Images\aspire-host-sqlserver-port.PNG = 0.6 Lessons Learnt\Images\aspire-host-sqlserver-port.PNG
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -96,6 +109,7 @@ Global
 		{19F5E67A-9BFA-48D6-94FE-A846EA695BA9} = {7B02F14D-F1DC-4478-B0E3-D800F466FE33}
 		{D9FC29D1-FF51-42BD-A969-2190CC3628C0} = {7B02F14D-F1DC-4478-B0E3-D800F466FE33}
 		{22B9927C-2F9B-49AF-82AE-A7C632639CA9} = {4B86DE0F-E49B-4F15-B0D8-6EABF2B436A9}
+		{3B61D791-6DF9-4446-A904-62ECF1DAB711} = {913A57C0-2C24-4649-9150-24AAE15F7F73}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D22D7AC9-37EE-4825-B46C-8B37B11744EB}

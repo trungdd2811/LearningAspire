@@ -10,8 +10,7 @@ var cache = builder.AddRedis(Constants.RedisCache);
 
 #region add SQL Server
 var sqlPassword = builder.AddParameter("sql-password", secret: true);
-var sqlServer = builder.AddSqlServer(Constants.EmployeesSQLServer, password: sqlPassword);
-
+var sqlServer = builder.AddSqlServer(Constants.EmployeesSQLServer, password: sqlPassword, 1443);
 
 if (builder.ExecutionContext.IsPublishMode)
 {
@@ -20,7 +19,7 @@ if (builder.ExecutionContext.IsPublishMode)
 }
 else
 {
-    sqlServer.WithDataBindMount("VolumeMount\\AppHost-sql-data");
+    sqlServer.WithDataVolume(Constants.EmployeesSQLServer);
 }
 var employeesDB = sqlServer.AddDatabase(Constants.EmployeesDB);
 #endregion

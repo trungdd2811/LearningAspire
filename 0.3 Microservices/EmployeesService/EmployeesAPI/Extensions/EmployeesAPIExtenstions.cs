@@ -7,7 +7,7 @@
             var services = builder.Services;
             builder.AddSqlServerDbContext<EmployeeDbContext>(Constants.EmployeesDB, opts =>
             {
-                opts.ConnectionString = "Data Source=IDL-LT-127\\SQLEXPRESS;Database=employees-sqldb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
+                //opts.ConnectionString = "Data Source=IDL-LT-127\\SQLEXPRESS;Database=employees-sqldb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
             },
                 opt =>
             {
