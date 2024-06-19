@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Employees.Infrastructure.Migrations
 {
     [DbContext(typeof(EmployeeDbContext))]
-    [Migration("20240618102834_Init")]
-    partial class Init
+    [Migration("20240619085326_InitDB")]
+    partial class InitDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

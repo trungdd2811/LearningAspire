@@ -1,5 +1,6 @@
 # Lessons learned from creating NativeAOT applications
-
+NativeAOT ecosytem is not mature now due to the limitation of the AOT compiler, but it is a good start for the future.
+Stop using it because the conflict with the reflection and the limitation of the AOT compiler - 2024/June/19
 
 ## 1. Reflection issue: JIT (Just-In-Time) vs AOT (Ahead-Of-Time) compilation
 

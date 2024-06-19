@@ -17,6 +17,12 @@ public class EmployeeDbContext : DbContext, IUnitOfWork
 #endif
 
     }
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+    //    optionsBuilder.UseModel(EmployeeDbContextModel.Instance);
+    //    base.OnConfiguring(optionsBuilder);
+
+    //}
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
 

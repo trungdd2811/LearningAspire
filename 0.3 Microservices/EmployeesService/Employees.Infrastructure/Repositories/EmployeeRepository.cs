@@ -29,7 +29,12 @@ public class EmployeeRepository : IEmployeeRepository
 
     public async Task<IEnumerable<Employee>> GetAllAsync()
     {
-        return await _context.Employees.ToListAsync();
+        return await _context.Employees
+               .Include(e => e.DirectReports)
+               .Include(e => e.Managers)
+               .ToListAsync();
+
+        //return await _context.Employees.ToListAsync();
     }
 
     public async Task<Employee> GetByIdAsync(int id)

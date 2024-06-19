@@ -1,11 +1,8 @@
 ﻿using LearningAspire.Commons.Domain.SeedWork;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
 
 namespace Employees.Domain.AggregateModel
 {
-    [JsonSerializable(typeof(Employee))]
     /// <summary>
     /// Represents an employee entity.
     /// </summary>
@@ -21,16 +18,15 @@ namespace Employees.Domain.AggregateModel
         /// Gets the name of the employee.
         /// </summary>
         public string Name { get; private set; }
+
         private List<Employee> _directReports;
         private List<Employee> _managers;
 
-        [NotMapped]
         /// <summary>
         /// Gets the collection of direct reports of the employee.
         /// </summary>
         public IReadOnlyCollection<Employee> DirectReports => _directReports?.AsReadOnly();
 
-        [NotMapped]
         /// <summary>
         /// Gets the collection of managers of the employee.
         /// </summary>
