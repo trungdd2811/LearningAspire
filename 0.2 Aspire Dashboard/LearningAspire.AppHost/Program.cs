@@ -5,7 +5,7 @@ var builder = DistributedApplication.CreateBuilder(args);
 #region add components to aspire orchestrator 
 var insights = builder.ExecutionContext.IsPublishMode
     ? builder.AddAzureApplicationInsights(Constants.MyAspireApp)
-    : builder.AddConnectionString(Constants.MyAspireApp, "APPLICATIONINSIGHTS_CONNECTION_STRING"); ;
+    : builder.AddConnectionString(Constants.MyAspireApp, "APPLICATIONINSIGHTS_CONNECTION_STRING");
 var cache = builder.AddRedis(Constants.RedisCache);
 
 #region add SQL Server
@@ -59,7 +59,5 @@ if (builder.ExecutionContext.IsPublishMode)
 }
 
 #endregion
-
-
 
 builder.Build().Run();
