@@ -39,9 +39,9 @@ sqlServer.WithDataVolume(Constants.EmployeesSQLServer);
 
 	Or you can see the following images to get the necessary information which is used to connect the database
 	
-	![aspire-host-sqlserver-port.PNG](0.6%20Lessons%20Learnt/Images/aspire-host-sqlserver-port.PNG)
+	![aspire-host-sqlserver-port.PNG](./Images/aspire-host-sqlserver-port.PNG)
 
-	![aspire-host-sqlserver-connect.PNG](0.6%20Lessons%20Learnt/Images/aspire-host-sqlserver-connect.PNG)
+	![aspire-host-sqlserver-connect.PNG](./Images/aspire-host-sqlserver-connect.PNG)
 
 
 ## 4. How the Aspire App Host (Orchestration) works basically
