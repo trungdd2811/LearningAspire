@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Aspire.StackExchange.Redis.DistributedCaching" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\0.1 Commons\LearningAspire.Commons\LearningAspire.Commons.csproj" />
     <ProjectReference Include="..\..\0.2 Aspire Dashboard\LearningAspire.ServiceDefaults\LearningAspire.ServiceDefaults.csproj" />
   </ItemGroup>
 

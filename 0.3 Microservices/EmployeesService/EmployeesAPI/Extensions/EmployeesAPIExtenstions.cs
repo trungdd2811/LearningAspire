@@ -5,15 +5,19 @@
         public static IHostApplicationBuilder AddApplicationServices(this IHostApplicationBuilder builder)
         {
             var services = builder.Services;
+            builder.AddRedisDistributedCache(Constants.RedisCache);
+            builder.AddRedisOutputCache(Constants.RedisCache);
             builder.AddSqlServerDbContext<EmployeeDbContext>(Constants.EmployeesDB,
             sqlEFCoreOpts =>
             {
-                sqlEFCoreOpts.ConnectionString = @"Data Source=IDL-LT-127\SQLEXPRESS;Database=employees-sqldb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
+                //get connection string from appsettings.json
+                //sqlEFCoreOpts.ConnectionString = @"Data Source=IDL-LT-127\SQLEXPRESS;Database=employees-sqldb;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
                 sqlEFCoreOpts.DisableRetry = true;
             },
             dbContextOpts =>
             {
                 //dbContextOpts.UseModel(Infrastructure.CompiledModels.EmployeeDbContextModel.Instance);
+                dbContextOpts.EnableSensitiveDataLogging();
                 dbContextOpts.EnableDetailedErrors();
             });
 

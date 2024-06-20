@@ -6,7 +6,7 @@ builder.AddApplicationServices();
 
 
 var app = builder.Build();
-
+app.UseOutputCache();
 
 app.UseHttpsRedirection();
 app.MapDefaultEndpoints();

@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-
 [Route("api/[controller]")]
 [ApiController]
 public class EmployeesController : ControllerBase
@@ -10,7 +8,7 @@ public class EmployeesController : ControllerBase
     {
         _employeeRepository = employeeRepository ?? throw new ArgumentNullException(nameof(employeeRepository));
     }
-
+    [OutputCache(Duration = 10)]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
