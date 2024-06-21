@@ -53,11 +53,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{3B61D7
 		0.6 Lessons Learnt\Images\add-sqlserver-container-wrong-result.png = 0.6 Lessons Learnt\Images\add-sqlserver-container-wrong-result.png
 		0.6 Lessons Learnt\Images\app-insight-connection-string.PNG = 0.6 Lessons Learnt\Images\app-insight-connection-string.PNG
 		0.6 Lessons Learnt\Images\app-insight-open-telemetry.PNG = 0.6 Lessons Learnt\Images\app-insight-open-telemetry.PNG
+		0.6 Lessons Learnt\Images\aspire-dashboard-compared.PNG = 0.6 Lessons Learnt\Images\aspire-dashboard-compared.PNG
+		0.6 Lessons Learnt\Images\aspire-dashboard-detail-compared.PNG = 0.6 Lessons Learnt\Images\aspire-dashboard-detail-compared.PNG
 		0.6 Lessons Learnt\Images\aspire-dashboard-open-telemetry-detail.PNG = 0.6 Lessons Learnt\Images\aspire-dashboard-open-telemetry-detail.PNG
 		0.6 Lessons Learnt\Images\aspire-dashboard-open-telemetry-trace.PNG = 0.6 Lessons Learnt\Images\aspire-dashboard-open-telemetry-trace.PNG
 		0.6 Lessons Learnt\Images\aspire-dashboard-open-telemetry.PNG = 0.6 Lessons Learnt\Images\aspire-dashboard-open-telemetry.PNG
 		0.6 Lessons Learnt\Images\aspire-host-sqlserver-connect.PNG = 0.6 Lessons Learnt\Images\aspire-host-sqlserver-connect.PNG
 		0.6 Lessons Learnt\Images\aspire-host-sqlserver-port.PNG = 0.6 Lessons Learnt\Images\aspire-host-sqlserver-port.PNG
+		0.6 Lessons Learnt\Images\azure-dashboard-compared.PNG = 0.6 Lessons Learnt\Images\azure-dashboard-compared.PNG
+		0.6 Lessons Learnt\Images\azure-dashboard-detail-compared.PNG = 0.6 Lessons Learnt\Images\azure-dashboard-detail-compared.PNG
 		0.6 Lessons Learnt\Images\vs-update-environment-variables.PNG = 0.6 Lessons Learnt\Images\vs-update-environment-variables.PNG
 	EndProjectSection
 EndProject

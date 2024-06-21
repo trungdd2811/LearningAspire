@@ -41,3 +41,17 @@ The dashboard persists telemetry in-memory which creates some limitations:
 
 4. Run the application and check the data in Azure Monitor - Application Insights
 ![See OpenTelemetry in Application Insights](./Images/app-insight-open-telemetry.PNG)
+
+## Comparison between Azure Application Insights and Azure Aspire Dashboard
+
+1. Dashboard
+	* Aspire Dashboard: Built-in dashboard to visualize the data collected by OpenTelemetry
+	![aspire-dashboard-compared](./Images/aspire-dashboard-compared.PNG)
+	* Azure Application Insights: Customizable dashboard to visualize the data collected by OpenTelemetry
+	![azure-dashboard-compared](./Images/azure-dashboard-compared.PNG)
+
+2. Failure visualization
+	* Aspire Dashboard: 
+	![aspire-dashboard-detail-compared](./Images/aspire-dashboard-detail-compared.PNG)
+	* Azure Application Insights:
+	![azure-dashboard-detail-compared](./Images/azure-dashboard-detail-compared.PNG)
