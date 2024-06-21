@@ -6,13 +6,15 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "applicationUrl": "https://localhost:17059;http://localhost:15137",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "DOTNET_ENVIRONMENT": "Development",
-        "DOTNET_DASHBOARD_OTLP_ENDPOINT_URL": "https://localhost:21005",
-        "DOTNET_RESOURCE_SERVICE_ENDPOINT_URL": "https://localhost:22061",
-        //"OTEL_EXPORTER_OTLP_ENDPOINT": "http://localhost:3000"
-      }
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development",
+            "DOTNET_ENVIRONMENT": "Development",
+            "DOTNET_DASHBOARD_OTLP_ENDPOINT_URL": "https://localhost:21005",
+            "DOTNET_RESOURCE_SERVICE_ENDPOINT_URL": "https://localhost:22061",
+            "APPLICATIONINSIGHTS_CONNECTION_STRING": "InstrumentationKey=99e165c6-674b-464f-9f2a-69b1b042ffec;IngestionEndpoint=https://northeurope-2.in.applicationinsights.azure.com/;LiveEndpoint=https://northeurope.livediagnostics.monitor.azure.com/;ApplicationId=33a860df-544a-4a4c-b644-776261748ae6",
+            "OTEL_EXPORTER_OTLP_ENDPOINT": "http://localhost:9090"
+
+        }
     },
     "http": {
       "commandName": "Project",
@@ -24,7 +26,8 @@
             "DOTNET_ENVIRONMENT": "Development",
             "DOTNET_DASHBOARD_OTLP_ENDPOINT_URL": "http://localhost:19039",
             "DOTNET_RESOURCE_SERVICE_ENDPOINT_URL": "http://localhost:20087",
-            //"OTEL_EXPORTER_OTLP_ENDPOINT": "http://localhost:3000"
+            "APPLICATIONINSIGHTS_CONNECTION_STRING": "InstrumentationKey=99e165c6-674b-464f-9f2a-69b1b042ffec;IngestionEndpoint=https://northeurope-2.in.applicationinsights.azure.com/;LiveEndpoint=https://northeurope.livediagnostics.monitor.azure.com/;ApplicationId=33a860df-544a-4a4c-b644-776261748ae6",
+            "OTEL_EXPORTER_OTLP_ENDPOINT": "http://localhost:9090"
         }
     }
   }
