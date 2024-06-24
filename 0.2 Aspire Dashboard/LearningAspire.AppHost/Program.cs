@@ -43,6 +43,7 @@ var apiService = builder.AddProject<Projects.LearningAspire_ApiService>(Constant
 
 
 var employeesService = builder.AddProject<Projects.Employees_API>(Constants.EmployeesService)
+	.WithExternalHttpEndpoints()
 	.WithReference(employeesDB)
 	.WithReference(cache)
 	.WithReplicas(1);
@@ -58,6 +59,7 @@ if (builder.ExecutionContext.IsPublishMode)
 {
 	webFrontEnd.WithReference(insights);
 	apiService.WithReference(insights);
+	employeesService.WithReference(insights);
 }
 
 #endregion
