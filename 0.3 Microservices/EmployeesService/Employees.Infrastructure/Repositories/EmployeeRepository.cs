@@ -39,17 +39,10 @@ public class EmployeeRepository : IEmployeeRepository
 
 	public async Task<Employee> GetByIdAsync(int id)
 	{
-		//Employee emp = new Employee();
-		//emp.Name = "111";
-
-		//Employee emp1 = new Employee();
-		//emp.Name = "222";
-
-		//emp.DirectReports.Add(emp1);
-
-		//await _context.SaveChangesAsync();
-
-		return await _context.Employees.FindAsync(id);
+		return await _context.Employees
+			  .Include(e => e.DirectReports)
+			  .Include(e => e.Managers)
+			  .FirstOrDefaultAsync(e => e.Id == id);
 	}
 
 	public async Task UpdateAsync(Employee employee)

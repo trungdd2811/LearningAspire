@@ -61,13 +61,11 @@ public class EmployeesController : ControllerBase
 		try
 		{
 			var employee = await _employeeRepository.GetByIdAsync(id);
-			Console.WriteLine($"DirectReports {0}", employee.DirectReports.ToList().Count);
-			Console.WriteLine($"Managers {0}", employee.Managers.ToList().Count);
 			if (employee == null)
 			{
 				return NotFound(new ApiResponse<string>($"Employee with Id = {id} not found."));
 			}
-			return Ok(new ApiResponse<EmployeeDTO>(employee.ToDTO()));
+			return Ok(new ApiResponse<Employee>(employee));
 		}
 		catch (Exception ex)
 		{
