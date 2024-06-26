@@ -65,7 +65,7 @@ public class EmployeesController : ControllerBase
 			{
 				return NotFound(new ApiResponse<string>($"Employee with Id = {id} not found."));
 			}
-			return Ok(new ApiResponse<Employee>(employee));
+			return Ok(new ApiResponse<EmployeeDTO>(employee.ToDTO()));
 		}
 		catch (Exception ex)
 		{
