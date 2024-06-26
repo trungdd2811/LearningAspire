@@ -1,57 +1,28 @@
-# Lessons learned when using Open Telemetry 
+## Azure CLI
+* **Target Audience**: System administrators and DevOps engineers who manage Azure resources.
+* **Usability**: Offers a straightforward, command-line interface for managing Azure resources. Commands follow a pattern that is easy to understand (az <service> <action>).
+* **Platform Support**: Cross-platform, available on Windows, macOS, and Linux.
+* **Integration**: Easily integrates with shell scripts and CI/CD pipelines. It's designed for automation and scripting in mind.
+* **Use Case**: Ideal for managing Azure resources directly from the command line across different platforms.
 
-OpenTelemetry is a powerful observability framework for cloud-native software. 
-It provides a set of APIs, libraries, agents, and instrumentation to collect distributed traces, metrics, and logs from your applications. 
-Aspire provides a very useful built-in dashboard to visualize the data collected by OpenTelemetry.
+## Azure PowerShell
+* **Target Audience**: System administrators and developers, especially those with a background in Windows and .NET.
+* **Usability**: Utilizes a verb-noun command syntax (Verb-AzNoun), consistent with PowerShell's approach. Offers advanced scripting capabilities with support for complex logic.
+* **Platform Support**: Available on Windows, macOS, and Linux through PowerShell Core.
+* **Integration**: Integrates well with Windows-based scripting environments. It's powerful for automation within Windows ecosystems and can leverage .NET libraries.
+* **Use Case**: Suited for complex automation tasks in Azure, especially in environments where PowerShell is already a part of the workflow.
 
-![Aspire Dashboard - Open Telemetry](./Images/aspire-dashboard-open-telemetry.PNG)
+## Azure Developer CLI (Az CLI)
+* **Target Audience**: Developers looking to streamline the development and deployment of Azure applications.
+* **Usability**: Designed to simplify the developer experience with Azure by abstracting complex cloud operations into simpler commands. It focuses on the application lifecycle, from scaffolding to deployment and monitoring.
+Platform Support: Aims to be cross-platform, supporting development workflows on Windows, macOS, and Linux.
+* **Integration**: Integrates with development tools and IDEs, focusing on improving developer productivity and simplifying CI/CD pipelines.
+* **Use Case**: Ideal for developers who need to quickly scaffold, develop, and deploy applications on Azure without deep diving into cloud resource management.
 
-![Aspire Dashboard - Open Telemetry Trace](./Images/aspire-dashboard-open-telemetry-trace.PNG)
+## Conclusion
+* **Azure CLI** is your go-to for cross-platform management of Azure resources with a straightforward command-line interface.
 
-![Aspire Dashboard - Open Telemetry Detail](./Images/aspire-dashboard-open-telemetry-detail.PNG)
+* **Azure PowerShell** offers more complex automation capabilities, especially for users familiar with PowerShell scripting and working within Windows or .NET environments.
 
-## Aspire Dashboard
-
-* Can be used as standalone mode via using specific docker image. The dashboard also has functionality for viewing .NET Aspire resources. 
-The dashboard resource features are disabled when it is run in standalone mode
-* The dashboard is designed as a development and short-term diagnostic tool. 
-The dashboard persists telemetry in-memory which creates some limitations:
-	* Telemetry is automatically removed if telemetry limits are exceeded.
-	* **No telemetry is persisted when the dashboard is restarted.**
-
-
-## How to send OpenTelemetry data to Azure Monitor - Application Insights
-1. Create an Azure Application Insights resource in Azure Portal. Then get the connection string
-![Azure Application Insights](./Images/app-insight-connection-string.PNG)
-2. Add the following code to your application to send OpenTelemetry data to Azure Monitor - Application Insights
-	```csharp
-	// Uncomment the following lines to enable the Azure Monitor exporter (requires the Azure.Monitor.OpenTelemetry.AspNetCore package)
-
-	if (!string.IsNullOrEmpty(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]))
-	{
-		builder.Services.AddOpenTelemetry()
-			.UseAzureMonitor(opts =>
-			{
-				opts.EnableLiveMetrics = true;
-			});
-	}
-	'''
-3. Update the connection string to environment variables. In visual studio, you can see the following image to update the environment variables
-![Update environment variables in VS](./Images/vs-update-environment-variables.PNG)
-
-4. Run the application and check the data in Azure Monitor - Application Insights
-![See OpenTelemetry in Application Insights](./Images/app-insight-open-telemetry.PNG)
-
-## Comparison between Azure Application Insights and Azure Aspire Dashboard
-
-1. Dashboard
-	* Aspire Dashboard: Built-in dashboard to visualize the data collected by OpenTelemetry
-	![aspire-dashboard-compared](./Images/aspire-dashboard-compared.PNG)
-	* Azure Application Insights: Customizable dashboard to visualize the data collected by OpenTelemetry
-	![azure-dashboard-compared](./Images/azure-dashboard-compared.PNG)
-
-2. Failure visualization
-	* Aspire Dashboard: 
-	![aspire-dashboard-detail-compared](./Images/aspire-dashboard-detail-compared.PNG)
-	* Azure Application Insights:
-	![azure-dashboard-detail-compared](./Images/azure-dashboard-detail-compared.PNG)
+* **Azure Developer CLI** is tailored for developers, simplifying the Azure development lifecycle and abstracting away the complexity of managing Azure resources directly.
+Choosing between these tools depends on your specific role, platform preference, and the complexity of your Azure management or development tasks.
