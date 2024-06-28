@@ -1,57 +1,32 @@
-# Lessons learned when using Open Telemetry 
+# Lessons learned when using Application Insights
 
-OpenTelemetry is a powerful observability framework for cloud-native software. 
-It provides a set of APIs, libraries, agents, and instrumentation to collect distributed traces, metrics, and logs from your applications. 
-Aspire provides a very useful built-in dashboard to visualize the data collected by OpenTelemetry.
+## Enabling Application Insights in Azure
+There are 2 ways to enable Application Insights in Azure:
+1. **Enable Application Insights during the creation of the Azure Web App (deployed in Azure App Service)**:
+	* You don't have write additional code to enable Application Insights. It's automatically configured when you create the Web App.
+	* When you create a new Azure Web App, you can enable Application Insights directly from the Azure Portal. This will automatically configure the Web App to send telemetry data to Application Insights.
+	* This is the easiest way to enable Application Insights, especially if you are creating a new Web App.
+	* You can also enable Application Insights for an existing Web App by going to the "Application Insights" section in the Web App settings and clicking "Enable".
 
-![Aspire Dashboard - Open Telemetry](./Images/aspire-dashboard-open-telemetry.PNG)
+2. **Write code to enable Application Insights in your application**:
+	* If you are not using Azure Web Apps or want more control over how telemetry data is collected, you can write code to enable Application Insights in your application.
+	* You can use the Application Insights SDK to manually instrument your application and send telemetry data to Application Insights.
+	* This gives you more control over what telemetry data is collected and how it is sent to Application Insights.
+	* You can also use the Application Insights SDK to add custom telemetry data to your application.
+	* This method is more flexible but requires more work to set up and configure.
 
-![Aspire Dashboard - Open Telemetry Trace](./Images/aspire-dashboard-open-telemetry-trace.PNG)
+## Using table "traces" to track if the application is started/restarted or not
+![Application Insights Traces](./Images/azure-appinsight-traces-app-started.PNG)
 
-![Aspire Dashboard - Open Telemetry Detail](./Images/aspire-dashboard-open-telemetry-detail.PNG)
+## Using Heartbeat data to check if the application is running or not
+Heartbeat data is collected automatically by the Application Insights SDK to check if the application is running or not. 
+If the application is running, the heartbeat data is sent to Application Insights at regular intervals (default is 15 minutes). 
+If the application stops running, the heartbeat data stops being sent, and you can use this information to track the availability of your application.
+![Application Insights Heartbeat](./Images/azure-appinsight-heartbeat.PNG)
 
-## Aspire Dashboard
+## Using Availability Tests to monitor the availability (is alived) of your application from different locations/regions
 
-* Can be used as standalone mode via using specific docker image. The dashboard also has functionality for viewing .NET Aspire resources. 
-The dashboard resource features are disabled when it is run in standalone mode
-* The dashboard is designed as a development and short-term diagnostic tool. 
-The dashboard persists telemetry in-memory which creates some limitations:
-	* Telemetry is automatically removed if telemetry limits are exceeded.
-	* **No telemetry is persisted when the dashboard is restarted.**
+![Application Insights Availability](./Images/azure-appinsight-availabilty-test.PNG)
 
+![Application Insights Availability Result](./Images/azure-appinsight-availabilty-results.PNG)
 
-## How to send OpenTelemetry data to Azure Monitor - Application Insights
-1. Create an Azure Application Insights resource in Azure Portal. Then get the connection string
-![Azure Application Insights](./Images/app-insight-connection-string.PNG)
-2. Add the following code to your application to send OpenTelemetry data to Azure Monitor - Application Insights
-	```csharp
-	// Uncomment the following lines to enable the Azure Monitor exporter (requires the Azure.Monitor.OpenTelemetry.AspNetCore package)
-
-	if (!string.IsNullOrEmpty(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]))
-	{
-		builder.Services.AddOpenTelemetry()
-			.UseAzureMonitor(opts =>
-			{
-				opts.EnableLiveMetrics = true;
-			});
-	}
-	'''
-3. Update the connection string to environment variables. In visual studio, you can see the following image to update the environment variables
-![Update environment variables in VS](./Images/vs-update-environment-variables.PNG)
-
-4. Run the application and check the data in Azure Monitor - Application Insights
-![See OpenTelemetry in Application Insights](./Images/app-insight-open-telemetry.PNG)
-
-## Comparison between Azure Application Insights and Azure Aspire Dashboard
-
-1. Dashboard
-	* Aspire Dashboard: Built-in dashboard to visualize the data collected by OpenTelemetry
-	![aspire-dashboard-compared](./Images/aspire-dashboard-compared.PNG)
-	* Azure Application Insights: Customizable dashboard to visualize the data collected by OpenTelemetry
-	![azure-dashboard-compared](./Images/azure-dashboard-compared.PNG)
-
-2. Failure visualization
-	* Aspire Dashboard: 
-	![aspire-dashboard-detail-compared](./Images/aspire-dashboard-detail-compared.PNG)
-	* Azure Application Insights:
-	![azure-dashboard-detail-compared](./Images/azure-dashboard-detail-compared.PNG)
