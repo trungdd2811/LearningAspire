@@ -26,7 +26,7 @@ If the application stops running, the heartbeat data stops being sent, and you c
 
 ## Using Availability Tests to monitor the availability (is alived) of your application from different locations/regions
 
-![Application Insights Availability](./Images/azure-appinsight-availabilty-test.PNG)
+![Application Insights Availability](./Images/azure-appinsight-availabilty-test.png)
 
-![Application Insights Availability Result](./Images/azure-appinsight-availabilty-results.PNG)
+![Application Insights Availability Result](./Images/azure-appinsight-availabilty-results.png)
 
