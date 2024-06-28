@@ -39,7 +39,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.6 Lessons Learnt", "0.6 Lessons Learnt", "{913A57C0-2C24-4649-9150-24AAE15F7F73}"
 	ProjectSection(SolutionItems) = preProject
 		0.6 Lessons Learnt\Aspire-AppHost.md = 0.6 Lessons Learnt\Aspire-AppHost.md
+		0.6 Lessons Learnt\azure-application-insights.md = 0.6 Lessons Learnt\azure-application-insights.md
+		0.6 Lessons Learnt\azure-cli.md = 0.6 Lessons Learnt\azure-cli.md
+		0.6 Lessons Learnt\deployment-CLIs.md = 0.6 Lessons Learnt\deployment-CLIs.md
 		0.6 Lessons Learnt\github-copilot.md = 0.6 Lessons Learnt\github-copilot.md
+		0.6 Lessons Learnt\json-serializer.md = 0.6 Lessons Learnt\json-serializer.md
 		0.6 Lessons Learnt\NativeAOT.md = 0.6 Lessons Learnt\NativeAOT.md
 		0.6 Lessons Learnt\open-telemetry.md = 0.6 Lessons Learnt\open-telemetry.md
 	EndProjectSection
