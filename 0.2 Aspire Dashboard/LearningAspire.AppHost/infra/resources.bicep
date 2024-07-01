@@ -1,8 +1,3 @@
-@minLength(1)
-@maxLength(10)
-@description('Name of the environment that can be used as part of naming resource convention, the name of the resource group for your application will use this name, prefixed with rg-')
-param environmentName string
-
 @description('The location used for all deployed resources')
 param location string = resourceGroup().location
 @description('Id of the user or app to assign application roles')
@@ -12,7 +7,7 @@ param principalId string = ''
 @description('Tags that will be applied to all resources')
 param tags object = {}
 
-var resourceToken = '${environmentName}-${uniqueString(resourceGroup().id)}'
+var resourceToken = uniqueString(resourceGroup().id)
 
 resource managedIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2023-01-31' = {
   name: 'mi-${resourceToken}'
@@ -89,8 +84,8 @@ resource explicitContributorUserRoleAssignment 'Microsoft.Authorization/roleAssi
   }
 }
 
-resource kvAspire 'Microsoft.KeyVault/vaults@2023-07-01' = {
-  name: replace('kv-${resourceToken}', '-', '')
+resource kv9dc776cf 'Microsoft.KeyVault/vaults@2023-07-01' = {
+  name: replace('kv9dc776cf-${resourceToken}', '-', '')
   location: location
   properties: {
     sku: {
@@ -102,9 +97,9 @@ resource kvAspire 'Microsoft.KeyVault/vaults@2023-07-01' = {
   }
 }
 
-resource kvAspireRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  name: guid(kvAspire.id, managedIdentity.id, subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '00482a5a-887f-4fb3-b363-3b7fe8e74483'))
-  scope: kvAspire
+resource kv9dc776cfRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  name: guid(kv9dc776cf.id, managedIdentity.id, subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '00482a5a-887f-4fb3-b363-3b7fe8e74483'))
+  scope: kv9dc776cf
   properties: {
     principalId: managedIdentity.properties.principalId
     principalType: 'ServicePrincipal'
@@ -112,9 +107,9 @@ resource kvAspireRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04
   }
 }
 
-resource kvAspireUserReadRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  name: guid(kvAspire.id, principalId, subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '4633458b-17de-408a-b874-0445c86b69e6'))
-  scope: kvAspire
+resource kv9dc776cfUserReadRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  name: guid(kv9dc776cf.id, principalId, subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '4633458b-17de-408a-b874-0445c86b69e6'))
+  scope: kv9dc776cf
   properties: {
     principalId: principalId
     roleDefinitionId:  subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '4633458b-17de-408a-b874-0445c86b69e6')
@@ -130,5 +125,5 @@ output AZURE_CONTAINER_REGISTRY_ENDPOINT string = containerRegistry.properties.l
 output AZURE_CONTAINER_REGISTRY_MANAGED_IDENTITY_ID string = managedIdentity.id
 output AZURE_CONTAINER_APPS_ENVIRONMENT_ID string = containerAppEnvironment.id
 output AZURE_CONTAINER_APPS_ENVIRONMENT_DEFAULT_DOMAIN string = containerAppEnvironment.properties.defaultDomain
-output SERVICE_BINDING_KVASPIRE_ENDPOINT string = kvAspire.properties.vaultUri
-output SERVICE_BINDING_KVASPIRE_NAME string = kvAspire.name
+output SERVICE_BINDING_KV9DC776CF_ENDPOINT string = kv9dc776cf.properties.vaultUri
+output SERVICE_BINDING_KV9DC776CF_NAME string = kv9dc776cf.name

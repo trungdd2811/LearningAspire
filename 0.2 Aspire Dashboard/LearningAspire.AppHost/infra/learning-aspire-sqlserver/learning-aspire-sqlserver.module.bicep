@@ -1,8 +1,4 @@
 targetScope = 'resourceGroup'
-@minLength(1)
-@maxLength(10)
-@description('Name of the environment that can be used as part of naming resource convention, the name of the resource group for your application will use this name, prefixed with rg-')
-param environmentName string
 
 @description('')
 param location string = resourceGroup().location
@@ -13,13 +9,12 @@ param principalId string
 @description('')
 param principalName string
 
-var resourceName = toLower(take('sql-${environmentName}-${uniqueString(resourceGroup().id)}', 24))
 
 resource sqlServer_Ke7emd7ch 'Microsoft.Sql/servers@2020-11-01-preview' = {
-  name: resourceName
+  name: toLower(take('learning-aspire-sqlserver${uniqueString(resourceGroup().id)}', 24))
   location: location
   tags: {
-    'aspire-resource-name': resourceName
+    'aspire-resource-name': 'learning-aspire-sqlserver'
   }
   properties: {
     version: '12.0'

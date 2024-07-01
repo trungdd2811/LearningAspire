@@ -13,10 +13,13 @@ properties:
       dotnet:
         autoConfigureDataProtection: true
     ingress:
-      external: true
+      additionalPortMappings:
+        - targetPort: 8081
+          external: false
+      external: false
       targetPort: {{ targetPortOrDefault 8080 }}
       transport: http
-      allowInsecure: false
+      allowInsecure: true
     registries:
       - server: {{ .Env.AZURE_CONTAINER_REGISTRY_ENDPOINT }}
         identity: {{ .Env.AZURE_CONTAINER_REGISTRY_MANAGED_IDENTITY_ID }}
@@ -24,31 +27,27 @@ properties:
       - name: applicationinsights-connection-string
         value: '{{ .Env.LEARNING_ASPIRE_APPLICATION_APPINSIGHTSCONNECTIONSTRING }}'
       - name: connectionstrings--redis-cache
-        keyVaultUrl: '{{ .Env.SERVICE_BINDING_KVASPIRE_ENDPOINT }}secrets/connectionString'
+        keyVaultUrl: '{{ .Env.SERVICE_BINDING_KV9DC776CF_ENDPOINT }}secrets/connectionString'
         identity: {{ .Env.AZURE_CONTAINER_REGISTRY_MANAGED_IDENTITY_ID }}
   template:
     containers:
       - image: {{ .Image }}
-        name: web-frontend
+        name: api-service
         env:
           - name: AZURE_CLIENT_ID
             value: {{ .Env.MANAGED_IDENTITY_CLIENT_ID }}
           - name: ASPNETCORE_FORWARDEDHEADERS_ENABLED
             value: "true"
+          - name: ASPNETCORE_HTTP_PORTS
+            value: 8080;8081
+          - name: HEALTHCHECKSUI_URLS
+            value: http://api-service:8081/healthz
           - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES
             value: "true"
           - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES
             value: "true"
           - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY
             value: in_memory
-          - name: services__api-service__http__0
-            value: http://api-service.internal.{{ .Env.AZURE_CONTAINER_APPS_ENVIRONMENT_DEFAULT_DOMAIN }}
-          - name: services__api-service__https__0
-            value: https://api-service.internal.{{ .Env.AZURE_CONTAINER_APPS_ENVIRONMENT_DEFAULT_DOMAIN }}
-          - name: services__employees-api__http__0
-            value: http://employees-api.{{ .Env.AZURE_CONTAINER_APPS_ENVIRONMENT_DEFAULT_DOMAIN }}
-          - name: services__employees-api__https__0
-            value: https://employees-api.{{ .Env.AZURE_CONTAINER_APPS_ENVIRONMENT_DEFAULT_DOMAIN }}
           - name: APPLICATIONINSIGHTS_CONNECTION_STRING
             secretRef: applicationinsights-connection-string
           - name: ConnectionStrings__redis-cache
@@ -56,5 +55,5 @@ properties:
     scale:
       minReplicas: 1
 tags:
-  azd-service-name: web-frontend
-  aspire-resource-name: web-frontend
+  azd-service-name: api-service
+  aspire-resource-name: api-service
