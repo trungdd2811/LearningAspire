@@ -50,7 +50,7 @@ dbContextOpts =>
 
 ![healthchecks-dependent-check-1](./Images/healthchecks-dependent-check-1.PNG)
 
-## 2 - The dashboard is very helpful if we have some services cannot be accessed from internet
+## 3 - The dashboard is very helpful if we have some services cannot be accessed from internet
 
 In the situation below, we have 2 APIs cannot be accessed from the internet so we cannot know if they are running or not
 By using this open-source project, it provides a dashboard and also an alerts system for us. It will reduce our work on Azure
