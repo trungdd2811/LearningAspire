@@ -56,7 +56,7 @@ public static class Extensions
 			{
 				tracing.AddAspNetCoreInstrumentation()
 					// Uncomment the following line to enable gRPC instrumentation (requires the OpenTelemetry.Instrumentation.GrpcNetClient package)
-					.AddGrpcClientInstrumentation()
+					//.AddGrpcClientInstrumentation()
 					.AddHttpClientInstrumentation();
 			});
 
@@ -74,6 +74,8 @@ public static class Extensions
 			builder.Services.AddOpenTelemetry().UseOtlpExporter();
 		}
 
+		#region application insights
+
 		// Uncomment the following lines to enable the Azure Monitor exporter (requires the Azure.Monitor.OpenTelemetry.AspNetCore package)
 
 		if (!string.IsNullOrEmpty(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]))
@@ -84,6 +86,17 @@ public static class Extensions
 				   opts.EnableLiveMetrics = true;
 			   });
 		}
+
+		#endregion application insights
+
+		#region Prometheus
+
+		// The following lines enable the Prometheus exporter (requires the OpenTelemetry.Exporter.Prometheus.AspNetCore package)
+		builder.Services.AddOpenTelemetry()
+		   // BUG: Part of the workaround for https://github.com/open-telemetry/opentelemetry-dotnet-contrib/issues/1617
+		   .WithMetrics(metrics => metrics.AddPrometheusExporter(options => options.DisableTotalNameSuffixForCounters = true));
+
+		#endregion Prometheus
 
 		return builder;
 	}
@@ -109,6 +122,11 @@ public static class Extensions
 
 	public static WebApplication MapDefaultEndpoints(this WebApplication app)
 	{
+		// The following line enables the Prometheus endpoint (requires the OpenTelemetry.Exporter.Prometheus.AspNetCore package)
+		app.MapPrometheusScrapingEndpoint();
+
+		#region HealthChecks
+
 		var healthChecks = app.MapGroup("");
 
 		// Configure health checks endpoints to use the configured request timeouts and cache policies
@@ -143,6 +161,8 @@ public static class Extensions
 					.RequireHost(pathToHostsMap[path]);
 			}
 		}
+
+		#endregion HealthChecks
 
 		return app;
 	}

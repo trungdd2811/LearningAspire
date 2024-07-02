@@ -75,6 +75,25 @@ if (builder.ExecutionContext.IsPublishMode)
 	apiService.WithReference(insights);
 	employeesService.WithReference(insights);
 }
+else
+{
+	#region add other metrics: promethus and grafana
+
+	var grafana = builder.AddContainer("grafana", "grafana/grafana")
+						 .WithBindMount("./Volumes/grafana/config", "/etc/grafana", isReadOnly: true)
+						 .WithBindMount("./Volumes/grafana/dashboards", "/var/lib/grafana/dashboards", isReadOnly: true)
+						 .WithHttpEndpoint(targetPort: 3000, name: "http");
+
+	builder.AddContainer("prometheus", "prom/prometheus")
+		   .WithBindMount("./Volumes/prometheus", "/etc/prometheus", isReadOnly: true)
+		   .WithHttpEndpoint(/* This port is fixed as it's referenced from the Grafana config */ port: 9090, targetPort: 9090);
+
+	apiService.WithEnvironment("GRAFANA_URL", grafana.GetEndpoint("http"));
+	employeesService.WithEnvironment("GRAFANA_URL", grafana.GetEndpoint("http"));
+	webFrontEnd.WithEnvironment("GRAFANA_URL", grafana.GetEndpoint("http"));
+
+	#endregion add other metrics: promethus and grafana
+}
 
 #endregion add components - project resources to aspire orchestrator
 
