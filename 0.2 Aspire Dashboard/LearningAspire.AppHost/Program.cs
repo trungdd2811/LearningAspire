@@ -89,8 +89,8 @@ else
 		   .WithHttpEndpoint(/* This port is fixed as it's referenced from the Grafana config */ port: 9090, targetPort: 9090);
 
 	apiService.WithEnvironment("GRAFANA_URL", grafana.GetEndpoint("http"));
-	employeesService.WithEnvironment("GRAFANA_URL", grafana.GetEndpoint("http"));
-	webFrontEnd.WithEnvironment("GRAFANA_URL", grafana.GetEndpoint("http"));
+	//employeesService.WithEnvironment("GRAFANA_URL", grafana.GetEndpoint("http"));
+	//webFrontEnd.WithEnvironment("GRAFANA_URL", grafana.GetEndpoint("http"));
 
 	#endregion add other metrics: promethus and grafana
 }

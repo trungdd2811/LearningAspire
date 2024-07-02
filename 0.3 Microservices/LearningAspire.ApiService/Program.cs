@@ -33,7 +33,6 @@ app.MapGet("/weatherforecast", async (IDistributedCache cache) =>
 		//do nothing
 	}
 
-
 	if (cachedForecast is null)
 	{
 		var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };

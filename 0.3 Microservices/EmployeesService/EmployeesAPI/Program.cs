@@ -1,12 +1,10 @@
-
 var builder = WebApplication.CreateSlimBuilder(args);
-
 
 builder.AddApplicationServices();
 
-
 var app = builder.Build();
-app.UseOutputCache();
+
+//app.UseOutputCache();
 
 app.UseHttpsRedirection();
 app.MapDefaultEndpoints();
@@ -15,7 +13,6 @@ app.UseExceptionHandler("/Error", createScopeForErrors: true);
 // The default HSTS value is 30 days.
 // You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 app.UseHsts();
-
 
 //var sampleTodos = new Todo[] {
 //    new(1, "Walk the dog"),
@@ -39,5 +36,4 @@ app.Run();
 //[JsonSerializable(typeof(Todo[]))]
 //internal partial class AppJsonSerializerContext : JsonSerializerContext
 //{
-
 //}

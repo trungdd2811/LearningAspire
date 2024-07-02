@@ -34,6 +34,8 @@ if (!app.Environment.IsDevelopment())
 	app.UseHsts();
 	app.UseHttpsRedirection();
 }
+//we should apply this policy for production environment only to avoid the error "The SSL connection could not be established"
+//app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();

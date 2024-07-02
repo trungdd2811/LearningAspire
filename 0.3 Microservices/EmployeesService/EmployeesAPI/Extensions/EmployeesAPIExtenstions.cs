@@ -5,8 +5,10 @@
 		public static IHostApplicationBuilder AddApplicationServices(this IHostApplicationBuilder builder)
 		{
 			var services = builder.Services;
-			builder.AddRedisDistributedCache(Constants.RedisCache);
+
+			//builder.AddRedisDistributedCache(Constants.RedisCache);
 			builder.AddRedisOutputCache(Constants.RedisCache);
+
 			builder.AddSqlServerDbContext<EmployeeDbContext>(Constants.EmployeesDB,
 			sqlEFCoreOpts =>
 			{
@@ -46,11 +48,9 @@
 				cfg.RegisterServicesFromAssemblyContaining(typeof(Program));
 			});
 
-			//inject EmployeesRepository    
+			//inject EmployeesRepository
 			services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 			return builder;
 		}
 	}
-
-
 }

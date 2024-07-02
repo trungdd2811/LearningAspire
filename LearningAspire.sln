@@ -43,6 +43,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.6 Lessons Learnt", "0.6 L
 		0.6 Lessons Learnt\azure-cli.md = 0.6 Lessons Learnt\azure-cli.md
 		0.6 Lessons Learnt\deployment-CLIs.md = 0.6 Lessons Learnt\deployment-CLIs.md
 		0.6 Lessons Learnt\github-copilot.md = 0.6 Lessons Learnt\github-copilot.md
+		0.6 Lessons Learnt\healthchecks-ui.md = 0.6 Lessons Learnt\healthchecks-ui.md
 		0.6 Lessons Learnt\json-serializer.md = 0.6 Lessons Learnt\json-serializer.md
 		0.6 Lessons Learnt\NativeAOT.md = 0.6 Lessons Learnt\NativeAOT.md
 		0.6 Lessons Learnt\open-telemetry.md = 0.6 Lessons Learnt\open-telemetry.md
@@ -73,6 +74,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{3B61D7
 		0.6 Lessons Learnt\Images\bicep-install-issue-fix-1.PNG = 0.6 Lessons Learnt\Images\bicep-install-issue-fix-1.PNG
 		0.6 Lessons Learnt\Images\bicep-install-issue-fix.PNG = 0.6 Lessons Learnt\Images\bicep-install-issue-fix.PNG
 		0.6 Lessons Learnt\Images\bicep-install-issue.PNG = 0.6 Lessons Learnt\Images\bicep-install-issue.PNG
+		0.6 Lessons Learnt\Images\healthchecks-dependent-check-1.PNG = 0.6 Lessons Learnt\Images\healthchecks-dependent-check-1.PNG
+		0.6 Lessons Learnt\Images\healthchecks-dependent-checks.PNG = 0.6 Lessons Learnt\Images\healthchecks-dependent-checks.PNG
+		0.6 Lessons Learnt\Images\healthchecks-ssl-issue.PNG = 0.6 Lessons Learnt\Images\healthchecks-ssl-issue.PNG
 		0.6 Lessons Learnt\json-serializer.md = 0.6 Lessons Learnt\json-serializer.md
 		0.6 Lessons Learnt\Images\vs-update-environment-variables.PNG = 0.6 Lessons Learnt\Images\vs-update-environment-variables.PNG
 	EndProjectSection

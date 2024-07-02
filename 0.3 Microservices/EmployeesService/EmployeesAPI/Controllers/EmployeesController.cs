@@ -8,7 +8,8 @@ public class EmployeesController : ControllerBase
 	{
 		_employeeRepository = employeeRepository ?? throw new ArgumentNullException(nameof(employeeRepository));
 	}
-	[OutputCache(Duration = 10)]
+
+	//[OutputCache(Duration = 10)]
 	[HttpGet]
 	public async Task<IActionResult> GetAll()
 	{
@@ -30,11 +31,10 @@ public class EmployeesController : ControllerBase
 			var result = JsonSerializer.Serialize(api, EmployeesJsonSerializerContext.Default.ApiResponseEmployee);
 			//return StatusCode(StatusCodes.Status500InternalServerError, result);
 			return StatusCode(StatusCodes.Status500InternalServerError, api);
-
 		}
 	}
 
-	[OutputCache(Duration = 10)]
+	//[OutputCache(Duration = 10)]
 	[HttpGet("GetAllWithoutDTO")]
 	public async Task<IActionResult> GetAllWithoutDTO()
 	{
@@ -51,7 +51,6 @@ public class EmployeesController : ControllerBase
 			var result = JsonSerializer.Serialize(api, EmployeesJsonSerializerContext.Default.ApiResponseEmployee);
 			//return StatusCode(StatusCodes.Status500InternalServerError, result);
 			return StatusCode(StatusCodes.Status500InternalServerError, api);
-
 		}
 	}
 

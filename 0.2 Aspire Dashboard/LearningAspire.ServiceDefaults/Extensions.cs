@@ -49,7 +49,6 @@ public static class Extensions
 			{
 				metrics.AddAspNetCoreInstrumentation()
 					.AddHttpClientInstrumentation()
-					.AddPrometheusExporter()
 					.AddRuntimeInstrumentation();
 			})
 			.WithTracing(tracing =>
