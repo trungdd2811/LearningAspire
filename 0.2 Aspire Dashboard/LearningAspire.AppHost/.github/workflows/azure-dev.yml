@@ -5,6 +5,7 @@ on:
     # Set this to the mainline branch you are using
     branches:
       - main
+      - master
 
 permissions:
   id-token: write
