@@ -1,0 +1,45 @@
+on:
+  push:
+    branches:
+    - master
+env:
+  DOTNET_CORE_VERSION: 7.0.x
+  CONTAINER_APP_ENVIRONMENT_NAME: prod-aspire
+  RESOURCE_GROUP: prod-aspire
+  CONTAINER_REGISTRY_NAME: registry20240703115411
+  CONTAINER_REGISTRY_LOGIN_SERVER: registry20240703115411.azurecr.io
+jobs:
+  BuildAndDeployContainerApp:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+        - appsourcepath: 0.3 Microservices/EmployeesService/EmployeesAPI
+          containerappname: employees.api-container-app
+        - appsourcepath: 0.3 Microservices/LearningAspire.ApiService
+          containerappname: learningaspire.apiservice-container-app
+        - appsourcepath: 0.4 UIs/LearningAspire.Web
+          containerappname: learningaspire.web-container-app
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v4
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+    - name: Azure login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.prod_aspire_SPN }}
+    - name: Container App deploy
+      uses: azure/container-apps-deploy-action@v1
+      with:
+        appSourcePath: ${{ github.workspace }}/${{ matrix.appsourcepath }}
+        acrName: ${{ env.CONTAINER_REGISTRY_NAME }}
+        acrUsername: ${{ secrets.registry20240703115411_USERNAME_448F }}
+        acrPassword: ${{ secrets.registry20240703115411_PASSWORD_448F }}
+        imageToBuild: ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }}/${{ matrix.containerappname }}:${{ github.sha }}
+        containerAppName: ${{ matrix.containerappname }}
+        containerAppEnvironment: ${{ env.CONTAINER_APP_ENVIRONMENT_NAME }}
+        resourceGroup: ${{ env.RESOURCE_GROUP }}
