@@ -52,7 +52,7 @@ jobs:
         shell: pwsh
 
       - name: Provision Infrastructure
-        run: azd provision --no-prompt
+        run: azd provision
 
       - name: Deploy Application
         run: azd deploy --no-prompt
