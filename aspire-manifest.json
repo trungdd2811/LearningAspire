@@ -1,0 +1,172 @@
+{
+  "resources": {
+    "learning-aspire-application": {
+      "type": "azure.bicep.v0",
+      "connectionString": "{learning-aspire-application.outputs.appInsightsConnectionString}",
+      "path": "learning-aspire-application.module.bicep",
+      "params": {
+        "logAnalyticsWorkspaceId": ""
+      }
+    },
+    "redis-cache": {
+      "type": "azure.bicep.v0",
+      "connectionString": "{redis-cache.secretOutputs.connectionString}",
+      "path": "redis-cache.module.bicep",
+      "params": {
+        "keyVaultName": ""
+      }
+    },
+    "sql-password": {
+      "type": "parameter.v0",
+      "value": "{sql-password.inputs.value}",
+      "inputs": {
+        "value": {
+          "type": "string",
+          "secret": true
+        }
+      }
+    },
+    "learning-aspire-sqlserver": {
+      "type": "azure.bicep.v0",
+      "connectionString": "Server=tcp:{learning-aspire-sqlserver.outputs.sqlServerFqdn},1433;Encrypt=True;Authentication=\u0022Active Directory Default\u0022",
+      "path": "learning-aspire-sqlserver.module.bicep",
+      "params": {
+        "principalId": "",
+        "principalName": ""
+      }
+    },
+    "employees-sqldb": {
+      "type": "value.v0",
+      "connectionString": "{learning-aspire-sqlserver.connectionString};Database=employees-sqldb"
+    },
+    "api-service": {
+      "type": "project.v0",
+      "path": "0.3 Microservices/LearningAspire.ApiService/LearningAspire.ApiService.csproj",
+      "env": {
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY": "in_memory",
+        "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true",
+        "ConnectionStrings__redis-cache": "{redis-cache.connectionString}",
+        "APPLICATIONINSIGHTS_CONNECTION_STRING": "{learning-aspire-application.connectionString}",
+        "ASPNETCORE_HTTP_PORTS": "8080;{api-service.bindings.healthchecks.targetPort}",
+        "HEALTHCHECKSUI_URLS": "{api-service.bindings.healthchecks.url}/healthz"
+      },
+      "bindings": {
+        "http": {
+          "scheme": "http",
+          "protocol": "tcp",
+          "transport": "http"
+        },
+        "https": {
+          "scheme": "https",
+          "protocol": "tcp",
+          "transport": "http"
+        },
+        "healthchecks": {
+          "scheme": "http",
+          "protocol": "tcp",
+          "transport": "http",
+          "targetPort": 8081
+        }
+      }
+    },
+    "employees-api": {
+      "type": "project.v0",
+      "path": "0.3 Microservices/EmployeesService/EmployeesAPI/Employees.API.csproj",
+      "env": {
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY": "in_memory",
+        "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true",
+        "ConnectionStrings__employees-sqldb": "{employees-sqldb.connectionString}",
+        "ConnectionStrings__redis-cache": "{redis-cache.connectionString}",
+        "APPLICATIONINSIGHTS_CONNECTION_STRING": "{learning-aspire-application.connectionString}",
+        "ASPNETCORE_HTTP_PORTS": "8080;{employees-api.bindings.healthchecks.targetPort}",
+        "HEALTHCHECKSUI_URLS": "{employees-api.bindings.healthchecks.url}/healthz"
+      },
+      "bindings": {
+        "http": {
+          "scheme": "http",
+          "protocol": "tcp",
+          "transport": "http",
+          "external": true
+        },
+        "https": {
+          "scheme": "https",
+          "protocol": "tcp",
+          "transport": "http",
+          "external": true
+        },
+        "healthchecks": {
+          "scheme": "http",
+          "protocol": "tcp",
+          "transport": "http",
+          "targetPort": 8081
+        }
+      }
+    },
+    "web-frontend": {
+      "type": "project.v0",
+      "path": "0.4 UIs/LearningAspire.Web/LearningAspire.Web.csproj",
+      "env": {
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY": "in_memory",
+        "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true",
+        "ConnectionStrings__redis-cache": "{redis-cache.connectionString}",
+        "services__api-service__http__0": "{api-service.bindings.http.url}",
+        "services__api-service__https__0": "{api-service.bindings.https.url}",
+        "services__api-service__healthchecks__0": "{api-service.bindings.healthchecks.url}",
+        "services__employees-api__http__0": "{employees-api.bindings.http.url}",
+        "services__employees-api__https__0": "{employees-api.bindings.https.url}",
+        "services__employees-api__healthchecks__0": "{employees-api.bindings.healthchecks.url}",
+        "APPLICATIONINSIGHTS_CONNECTION_STRING": "{learning-aspire-application.connectionString}",
+        "ASPNETCORE_HTTP_PORTS": "8080;{web-frontend.bindings.healthchecks.targetPort}",
+        "HEALTHCHECKSUI_URLS": "{web-frontend.bindings.healthchecks.url}/healthz"
+      },
+      "bindings": {
+        "http": {
+          "scheme": "http",
+          "protocol": "tcp",
+          "transport": "http",
+          "external": true
+        },
+        "https": {
+          "scheme": "https",
+          "protocol": "tcp",
+          "transport": "http",
+          "external": true
+        },
+        "healthchecks": {
+          "scheme": "http",
+          "protocol": "tcp",
+          "transport": "http",
+          "targetPort": 8081
+        }
+      }
+    },
+    "healthchecksui": {
+      "type": "container.v0",
+      "image": "docker.io/xabarilcoding/healthchecksui:5.0.0",
+      "env": {
+        "ui_path": "/",
+        "HealthChecksUI__HealthChecks__0__Name": "api-service",
+        "HealthChecksUI__HealthChecks__0__Uri": "{api-service.bindings.healthchecks.url}/healthz",
+        "HealthChecksUI__HealthChecks__1__Name": "employees-api",
+        "HealthChecksUI__HealthChecks__1__Uri": "{employees-api.bindings.healthchecks.url}/healthz",
+        "HealthChecksUI__HealthChecks__2__Name": "web-frontend",
+        "HealthChecksUI__HealthChecks__2__Uri": "{web-frontend.bindings.healthchecks.url}/healthz"
+      },
+      "bindings": {
+        "http": {
+          "scheme": "http",
+          "protocol": "tcp",
+          "transport": "http",
+          "targetPort": 80,
+          "external": true
+        }
+      }
+    }
+  }
+}
