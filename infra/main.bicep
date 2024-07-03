@@ -13,7 +13,7 @@ param location string
 param principalId string = ''
 
 @secure()
-param sql_password string
+param sql_password string = 'Trung123456'
 
 var tags = {
   'azd-env-name': environmentName
