@@ -18,5 +18,8 @@ Please read the link below to understant the basic steps first
 
 4 - Push the changes to correct branch as mentioned in Github Action workflow file and trigger the deployment
 
-5 - (Optional) To see generated bicep files, please see the image below
+5 - See the CI/CD pipeline in Github
+![azd-github-actions-result](./Images/azd-github-actions-result.PNG)
+
+6 - (Optional) To see generated bicep files, please see the image below
 ![azd-sync-creae-bicep](./Images/azd-sync-creae-bicep.PNG)
