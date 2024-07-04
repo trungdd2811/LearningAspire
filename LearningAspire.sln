@@ -89,6 +89,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{3B61D7
 		0.6 Lessons Learnt\Images\vs-update-environment-variables.PNG = 0.6 Lessons Learnt\Images\vs-update-environment-variables.PNG
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.7 Others", "0.7 Others", "{EB345315-93DC-4B38-9EC0-9C73D2DA2F44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "git hooks", "git hooks", "{4AA70863-9F95-4187-A535-9E0626CBAB8A}"
+	ProjectSection(SolutionItems) = preProject
+		0.7 Others\git hooks\prepare-commit-msg = 0.7 Others\git hooks\prepare-commit-msg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -152,6 +159,7 @@ Global
 		{D9FC29D1-FF51-42BD-A969-2190CC3628C0} = {7B02F14D-F1DC-4478-B0E3-D800F466FE33}
 		{22B9927C-2F9B-49AF-82AE-A7C632639CA9} = {4B86DE0F-E49B-4F15-B0D8-6EABF2B436A9}
 		{3B61D791-6DF9-4446-A904-62ECF1DAB711} = {913A57C0-2C24-4649-9150-24AAE15F7F73}
+		{4AA70863-9F95-4187-A535-9E0626CBAB8A} = {EB345315-93DC-4B38-9EC0-9C73D2DA2F44}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D22D7AC9-37EE-4825-B46C-8B37B11744EB}
