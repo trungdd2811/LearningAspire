@@ -20,6 +20,8 @@ jobs:
         with:
           dotnet-version: 8.x
           cache: true
+          cache-dependency-path: subdir/packages.lock.json
+          cache: true
       - name: Build whole .net solution before mirroring
         run: dotnet build
       
