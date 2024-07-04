@@ -26,4 +26,7 @@ jobs:
         
       - name: Build whole .net solution before mirroring
         run: dotnet build
+        
+      - name: Mirror development repository to the deployement repository on Azure DevOps
+        run: git push --mirror https://trungdd2811:f52pww727ezcyzdrm55tg2pzrspbxwtwwpfmumioojs6kxkjpwgq@dev.azure.com/trungdd2811/Learning%20Aspire%20Azure%20DevOps/_git/Learning%20Aspire%20Azure%20DevOps
       
