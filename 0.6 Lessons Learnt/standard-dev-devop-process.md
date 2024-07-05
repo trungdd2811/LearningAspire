@@ -1,4 +1,4 @@
-# Lessons learned from applying standard process between DEVs and DEVOPTs to develop, deploy ASPIRE project
+# Lessons learned from applying standard process between DEV and DEVOPS to develop, deploy ASPIRE project
 
 ![standard-dev-devops-process](./Images/standard-dev-devops-process.PNG)
 
