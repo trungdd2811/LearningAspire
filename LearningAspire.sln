@@ -48,6 +48,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.6 Lessons Learnt", "0.6 L
 		0.6 Lessons Learnt\json-serializer.md = 0.6 Lessons Learnt\json-serializer.md
 		0.6 Lessons Learnt\NativeAOT.md = 0.6 Lessons Learnt\NativeAOT.md
 		0.6 Lessons Learnt\open-telemetry.md = 0.6 Lessons Learnt\open-telemetry.md
+		0.6 Lessons Learnt\standard-dev-devop-process.md = 0.6 Lessons Learnt\standard-dev-devop-process.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{3B61D791-6DF9-4446-A904-62ECF1DAB711}"
@@ -70,15 +71,30 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{3B61D7
 		0.6 Lessons Learnt\Images\azd-init-result.PNG = 0.6 Lessons Learnt\Images\azd-init-result.PNG
 		0.6 Lessons Learnt\Images\azd-init.PNG = 0.6 Lessons Learnt\Images\azd-init.PNG
 		0.6 Lessons Learnt\Images\azd-sync-creae-bicep.PNG = 0.6 Lessons Learnt\Images\azd-sync-creae-bicep.PNG
+		0.6 Lessons Learnt\Images\azure-app-registration-created.PNG = 0.6 Lessons Learnt\Images\azure-app-registration-created.PNG
 		0.6 Lessons Learnt\Images\azure-appinsight-availabilty-results.png = 0.6 Lessons Learnt\Images\azure-appinsight-availabilty-results.png
 		0.6 Lessons Learnt\Images\azure-appinsight-availabilty-test.png = 0.6 Lessons Learnt\Images\azure-appinsight-availabilty-test.png
 		0.6 Lessons Learnt\Images\azure-appinsight-heartbeat.PNG = 0.6 Lessons Learnt\Images\azure-appinsight-heartbeat.PNG
 		0.6 Lessons Learnt\Images\azure-appinsight-traces-app-started.PNG = 0.6 Lessons Learnt\Images\azure-appinsight-traces-app-started.PNG
 		0.6 Lessons Learnt\Images\azure-dashboard-compared.PNG = 0.6 Lessons Learnt\Images\azure-dashboard-compared.PNG
 		0.6 Lessons Learnt\Images\azure-dashboard-detail-compared.PNG = 0.6 Lessons Learnt\Images\azure-dashboard-detail-compared.PNG
+		0.6 Lessons Learnt\Images\azure-depops-pipelines-provision-failed-password-hotfix.PNG = 0.6 Lessons Learnt\Images\azure-depops-pipelines-provision-failed-password-hotfix.PNG
+		0.6 Lessons Learnt\Images\azure-depops-pipelines-provision-failed-password.PNG = 0.6 Lessons Learnt\Images\azure-depops-pipelines-provision-failed-password.PNG
+		0.6 Lessons Learnt\Images\azure-devops-azd-init.PNG = 0.6 Lessons Learnt\Images\azure-devops-azd-init.PNG
+		0.6 Lessons Learnt\Images\azure-devops-azd-pipeline-config-locally.png = 0.6 Lessons Learnt\Images\azure-devops-azd-pipeline-config-locally.png
+		0.6 Lessons Learnt\Images\azure-devops-create-project.PNG = 0.6 Lessons Learnt\Images\azure-devops-create-project.PNG
+		0.6 Lessons Learnt\Images\azure-devops-create-repository.PNG = 0.6 Lessons Learnt\Images\azure-devops-create-repository.PNG
+		0.6 Lessons Learnt\Images\azure-devops-pat-create.PNG = 0.6 Lessons Learnt\Images\azure-devops-pat-create.PNG
+		0.6 Lessons Learnt\Images\azure-devops-pat.PNG = 0.6 Lessons Learnt\Images\azure-devops-pat.PNG
+		0.6 Lessons Learnt\Images\azure-devops-pipelines-created.PNG = 0.6 Lessons Learnt\Images\azure-devops-pipelines-created.PNG
+		0.6 Lessons Learnt\Images\azure-devops-repository-generate-url-1.PNG = 0.6 Lessons Learnt\Images\azure-devops-repository-generate-url-1.PNG
+		0.6 Lessons Learnt\Images\azure-devops-repository-generate-url-2.PNG = 0.6 Lessons Learnt\Images\azure-devops-repository-generate-url-2.PNG
+		0.6 Lessons Learnt\Images\azure-devops-service-connection-created.PNG = 0.6 Lessons Learnt\Images\azure-devops-service-connection-created.PNG
 		0.6 Lessons Learnt\Images\bicep-install-issue-fix-1.PNG = 0.6 Lessons Learnt\Images\bicep-install-issue-fix-1.PNG
 		0.6 Lessons Learnt\Images\bicep-install-issue-fix.PNG = 0.6 Lessons Learnt\Images\bicep-install-issue-fix.PNG
 		0.6 Lessons Learnt\Images\bicep-install-issue.PNG = 0.6 Lessons Learnt\Images\bicep-install-issue.PNG
+		0.6 Lessons Learnt\Images\github-mirror-to-azure-devops-result.PNG = 0.6 Lessons Learnt\Images\github-mirror-to-azure-devops-result.PNG
+		0.6 Lessons Learnt\Images\github-mirror-to-azure-devops.PNG = 0.6 Lessons Learnt\Images\github-mirror-to-azure-devops.PNG
 		0.6 Lessons Learnt\Images\healthchecks-applications-map.PNG = 0.6 Lessons Learnt\Images\healthchecks-applications-map.PNG
 		0.6 Lessons Learnt\Images\healthchecks-azure-monitor-dashboard.PNG = 0.6 Lessons Learnt\Images\healthchecks-azure-monitor-dashboard.PNG
 		0.6 Lessons Learnt\Images\healthchecks-dashboard.PNG = 0.6 Lessons Learnt\Images\healthchecks-dashboard.PNG
@@ -86,6 +102,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{3B61D7
 		0.6 Lessons Learnt\Images\healthchecks-dependent-checks.PNG = 0.6 Lessons Learnt\Images\healthchecks-dependent-checks.PNG
 		0.6 Lessons Learnt\Images\healthchecks-ssl-issue.PNG = 0.6 Lessons Learnt\Images\healthchecks-ssl-issue.PNG
 		0.6 Lessons Learnt\json-serializer.md = 0.6 Lessons Learnt\json-serializer.md
+		0.6 Lessons Learnt\Images\standard-dev-devops-process.PNG = 0.6 Lessons Learnt\Images\standard-dev-devops-process.PNG
 		0.6 Lessons Learnt\Images\vs-update-environment-variables.PNG = 0.6 Lessons Learnt\Images\vs-update-environment-variables.PNG
 	EndProjectSection
 EndProject
