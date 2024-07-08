@@ -160,7 +160,7 @@ This step is very important. You should have an active azure subscription first.
 	PS D:\Projects\AsipreDeployment> azd pipeline config --provider azdo
 	```
 
-	![azure-devops-azd-pipeline-config-locally](./Images/azure-devops-azd-pipeline-config-locally.PNG)
+	![azure-devops-azd-pipeline-config-locally](./Images/azure-devops-azd-pipeline-config-locally.png)
 
 Some necessary things are created automatically:
 
