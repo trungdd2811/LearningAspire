@@ -16,8 +16,10 @@ It is easy, please see the github website to know how to create a repository
 
 * Create a Azure DevOps account
 * Create a deployment project
+  
 	![azure-devops-create-project](./Images/azure-devops-create-project.PNG)
 * Create a empty deployment repository
+  
 	![azure-devops-create-repository](./Images/azure-devops-create-repository.PNG)
 * Generate the URL will be used to mirror codes from the development repository
 	* format: **https://{user-name}:{password}@dev.azure.com/trungdd2811/AsipreDeployment/_git/AsipreDeployment**
