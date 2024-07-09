@@ -98,50 +98,58 @@ pool:
 steps:
 
   - task: Bash@3
-	displayName: Install azd
-	inputs:
-	  targetType: 'inline'
-	  script: |
-		curl -fsSL https://aka.ms/install-azd.sh | bash
+    displayName: Install azd
+    inputs:
+      targetType: 'inline'
+      script: |
+        curl -fsSL https://aka.ms/install-azd.sh | bash
 
   # azd delegate auth to az to use service connection with AzureCLI@2
   - pwsh: |
-	  azd config set auth.useAzCliAuth "true"
-	displayName: Configure `azd` to Use AZ CLI Authentication.
+      azd config set auth.useAzCliAuth "true"
+    displayName: Configure `azd` to Use AZ CLI Authentication.
 
   - task: Bash@3
-	displayName: Install .NET Aspire workload
-	inputs:
-	  targetType: 'inline'
-	  script: |
-		dotnet workload install aspire
+    displayName: Install .NET Aspire workload
+    inputs:
+      targetType: 'inline'
+      script: |
+        dotnet workload install aspire
 
   - task: AzureCLI@2
-	displayName: Provision Infrastructure
-	inputs:
-	  azureSubscription: azconnection
-	  scriptType: bash
-	  scriptLocation: inlineScript
-	  inlineScript: |
-		azd provision --no-prompt
-	env:
-	  AZURE_SUBSCRIPTION_ID: $(AZURE_SUBSCRIPTION_ID)
-	  AZURE_ENV_NAME: $(AZURE_ENV_NAME)
-	  AZURE_LOCATION: $(AZURE_LOCATION)
+    displayName: Provision Infrastructure
+    inputs:
+      azureSubscription: azconnection
+      scriptType: bash
+      scriptLocation: inlineScript
+      inlineScript: |
+        azd provision --no-prompt --no-state
+    env:
+      AZURE_SUBSCRIPTION_ID: $(AZURE_SUBSCRIPTION_ID)
+      AZURE_ENV_NAME: $(AZURE_ENV_NAME)
+      AZURE_LOCATION: $(AZURE_LOCATION)
+      AZD_INITIAL_ENVIRONMENT_CONFIG: $(AZD_INITIAL_ENVIRONMENT_CONFIG)
 
   - task: AzureCLI@2
-	displayName: Deploy Application
-	inputs:
-	  azureSubscription: azconnection
-	  scriptType: bash
-	  scriptLocation: inlineScript
-	  inlineScript: |
-		azd deploy --no-prompt
-	env:
-	  AZURE_SUBSCRIPTION_ID: $(AZURE_SUBSCRIPTION_ID)
-	  AZURE_ENV_NAME: $(AZURE_ENV_NAME)
-	  AZURE_LOCATION: $(AZURE_LOCATION)
+    displayName: Deploy Application
+    inputs:
+      azureSubscription: azconnection
+      scriptType: bash
+      scriptLocation: inlineScript
+      inlineScript: |
+        azd deploy --no-prompt
+    env:
+      AZURE_SUBSCRIPTION_ID: $(AZURE_SUBSCRIPTION_ID)
+      AZURE_ENV_NAME: $(AZURE_ENV_NAME)
+      AZURE_LOCATION: $(AZURE_LOCATION)
 ```
+
+* **Notes:**
+	* azd provision --no-prompt --no-state: 
+    	* Azd uses the azure-subscription-deployment as a way to detect changes between a previous run and skip re-running a new deployment. When you delete a resource group manually, the subscription level deployment used to create the resource group is not deleted, so, azd doesn't know the resource group is not there anymore. To sync the deploymenet state, you should use "azd down"
+    	* "-no-state" means AZD will always provision the infrastructure even if there is no change
+	* AZD_INITIAL_ENVIRONMENT_CONFIG: $(AZD_INITIAL_ENVIRONMENT_CONFIG): it is used to get secret values and use them in bicep files. More details, section "Infrastructure parameters": https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/configure-devops-pipeline?tabs=azdo
+
 
 #### 4.2.2 - Configure the workflow file (Azure pipelines)
 This step is very important. You should have an active azure subscription first. It will do:
@@ -169,23 +177,34 @@ Some necessary things are created automatically:
 * A Service Connection is created automatically on Azure DevOps to allow connection between Azure and Azure DevOps
 	![azure-devops-service-connection-created](./Images/azure-devops-service-connection-created.PNG)
 
-* A pipelines workflow is created and run
+* A pipelines workflow is created and run. It also created necessary enviroment variables; you can change it later in the related pipelines
+    ![azure-devops-pipelines-variables-created](./Images/azure-devops-pipelines-variables-created.PNG)
+
 	![aazure-devops-pipelines-created](./Images/azure-devops-pipelines-created.PNG)
 
 
 # Troubleshooting
+* AZD DOWN failed because of needed confirmation
+    * Fix: run the command with "--force"
+	```bash
+	azd down --no-prompt --force
+	```
+    ![azure-azd-down-failed](./Images/azure-azd-down-failed.PNG)
 
-The created pipelines run failed because the password is not filled
-![azure-depops-pipelines-provision-failed-password](./Images/azure-depops-pipelines-provision-failed-password.PNG)
 
-The solution is generating IaC files (bicep files) and correct them
+* The created pipelines run failed because the password is not filled: After updating pipelines with using scret values (as mentioned in previous steps) then we will not have this issue.
+    
 
-* generating bicep files by running commands below
+	![azure-depops-pipelines-provision-failed-password](./Images/azure-depops-pipelines-provision-failed-password.PNG)
 
-```
-D:\Projects\AsipreDeployment> azd config set alpha.infraSynth on
-D:\Projects\AsipreDeployment> azd infra synth
-```
+	The solution is generating IaC files (bicep files) and correct them
 
-* change the code to do the hot-fix, will find another way to update bicep file and use the keyvault
-	![azure-depops-pipelines-provision-failed-password-hotfix](./Images/azure-depops-pipelines-provision-failed-password-hotfix.PNG)
+    * generating bicep files by running commands below
+
+	```
+	D:\Projects\AsipreDeployment> azd config set alpha.infraSynth on
+	D:\Projects\AsipreDeployment> azd infra synth
+	```
+
+	* change the code to do the hot-fix, will find another way to update bicep file and use the keyvault
+		![azure-depops-pipelines-provision-failed-password-hotfix](./Images/azure-depops-pipelines-provision-failed-password-hotfix.PNG)
