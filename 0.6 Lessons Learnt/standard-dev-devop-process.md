@@ -1,4 +1,4 @@
-# Lessons learned from applying standard process between DEVs and DEVOPTs to develop, deploy ASPIRE project
+# Lessons learned from applying standard process between DEV and DEVOPS to develop, deploy ASPIRE project
 
 ![standard-dev-devops-process](./Images/standard-dev-devops-process.PNG)
 
@@ -16,8 +16,10 @@ It is easy, please see the github website to know how to create a repository
 
 * Create a Azure DevOps account
 * Create a deployment project
+  
 	![azure-devops-create-project](./Images/azure-devops-create-project.PNG)
 * Create a empty deployment repository
+  
 	![azure-devops-create-repository](./Images/azure-devops-create-repository.PNG)
 * Generate the URL will be used to mirror codes from the development repository
 	* format: **https://{user-name}:{password}@dev.azure.com/trungdd2811/AsipreDeployment/_git/AsipreDeployment**
@@ -166,7 +168,7 @@ This step is very important. You should have an active azure subscription first.
 	PS D:\Projects\AsipreDeployment> azd pipeline config --provider azdo
 	```
 
-	![azure-devops-azd-pipeline-config-locally](./Images/azure-devops-azd-pipeline-config-locally.PNG)
+	![azure-devops-azd-pipeline-config-locally](./Images/azure-devops-azd-pipeline-config-locally.png)
 
 Some necessary things are created automatically:
 
@@ -199,6 +201,7 @@ Some necessary things are created automatically:
 
 	The solution is generating IaC files (bicep files) and correct them
 
+<<<<<<< HEAD
     * generating bicep files by running commands below
 
 	```
@@ -208,3 +211,7 @@ Some necessary things are created automatically:
 
 	* change the code to do the hot-fix, will find another way to update bicep file and use the keyvault
 		![azure-depops-pipelines-provision-failed-password-hotfix](./Images/azure-depops-pipelines-provision-failed-password-hotfix.PNG)
+=======
+* change the code to do the hot-fix, will find another way to update bicep file and use the keyvault
+	![azure-depops-pipelines-provision-failed-password-hotfix](./Images/azure-depops-pipelines-provision-failed-password-hotfix.PNG)
+>>>>>>> bf4ddf3f2529c09ef62a8af68c75804892bb9fe8
