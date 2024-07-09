@@ -201,17 +201,6 @@ Some necessary things are created automatically:
 
 	The solution is generating IaC files (bicep files) and correct them
 
-<<<<<<< HEAD
-    * generating bicep files by running commands below
-
-	```
-	D:\Projects\AsipreDeployment> azd config set alpha.infraSynth on
-	D:\Projects\AsipreDeployment> azd infra synth
-	```
-
-	* change the code to do the hot-fix, will find another way to update bicep file and use the keyvault
-		![azure-depops-pipelines-provision-failed-password-hotfix](./Images/azure-depops-pipelines-provision-failed-password-hotfix.PNG)
-=======
 * change the code to do the hot-fix, will find another way to update bicep file and use the keyvault
 	![azure-depops-pipelines-provision-failed-password-hotfix](./Images/azure-depops-pipelines-provision-failed-password-hotfix.PNG)
->>>>>>> bf4ddf3f2529c09ef62a8af68c75804892bb9fe8
+
