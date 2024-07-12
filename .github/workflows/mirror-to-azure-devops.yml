@@ -3,7 +3,7 @@ name: "Mirror repository to Azure DevOps"
 on:
   push:
     branches:
-      - sync-to-devops
+      - sync-to-devops111
 
 jobs:
   mirror:
