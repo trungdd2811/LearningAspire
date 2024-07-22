@@ -28,4 +28,4 @@ jobs:
         run: dotnet build
         
       - name: Mirror development repository to the deployement repository on Azure DevOps
-        run: git push --mirror https://trungdd2811:fbw3r4z3ghm7qh6umfau6ytznjobcg5vrzrkasxdxprqezu7sajq@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
+        run: git push --mirror https://trungdd2811:3xzyqhfuqesablb2tgtmxpp3fcxuk5i44566jaeokjdn7pmqcjla@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
