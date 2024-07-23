@@ -32,6 +32,8 @@ It is easy, please see the github website to know how to create a repository
 
 ## 3 - Using Github Action to create a simple CI to mirror Github repository to Azure DevOp repository
 
+* Create a Github Action by using following codes
+
 ```yaml
 name: "Mirror repository to Azure DevOps"
 
@@ -62,13 +64,20 @@ jobs:
 	  - name: Build whole .net solution before mirroring
 		run: dotnet build
 		
-	  - name: Mirror development repository to the deployment repository on Azure DevOps
-		run: git push --mirror {your deployment repo's URL which is created at step 2}
+	  - name: Mirror development repository to the deployement repository on Azure DevOps
+		run: |
+		  git remote add orgin https://trungdd2811:qarmlrlxof4i3p4e26ybtwau2b57tcno27tyde7tk3z3dinknfsq@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
+		  git push 
 	  
 ```
-	![github-mirror-to-azure-devops](./Images/github-mirror-to-azure-devops.PNG)
+* Set the right permission for Github action BOT to run this action
 
-	![github-mirror-to-azure-devops-result](./Images/github-mirror-to-azure-devops-result.PNG)
+![github_permission_action_bot](./Images/github_permission_action_bot.PNG)
+
+
+![github-mirror-to-azure-devops](./Images/github-mirror-to-azure-devops.PNG)
+
+![github-mirror-to-azure-devops-result](./Images/github-mirror-to-azure-devops-result.PNG)
 
 ## 4 - Using Azure DevOps to deploy codes to Deployment Environment (Azure) via IaC
 
