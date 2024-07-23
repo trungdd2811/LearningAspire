@@ -29,5 +29,5 @@ jobs:
         
       - name: Mirror development repository to the deployement repository on Azure DevOps
         run: |
-          git remote add AzureDevOps https://trungdd2811:7ss2nmojnhjxwvycsmwoifcieoenj26umm3pvcuoe4c2wmnyy74a@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
-          git push AzureDevOps
+          git remote add AzureDevOps https://trungdang2024:bs6zhcg6jeuopl2ea7xp3o3kvm5e2lygl75fpn7azrhu3izqeyzq@dev.azure.com/trungdang2024/MirroredLearningAspire/_git/MirroredLearningAspire
+          git push -u AzureDevOps --all
