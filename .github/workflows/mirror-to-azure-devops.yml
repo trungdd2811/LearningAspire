@@ -9,22 +9,22 @@ jobs:
     name: Mirror repository to Azure DevOps
     runs-on: ubuntu-latest
     environment: AzureDevOps
+    env: # Set the secret as an input
+      AZORG: ${{ secrets.AZORG }}
+      AZUREPAT: ${{ secrets.AZUREPAT }}
+      AZUSERNAME: ${{ secrets.AZUSERNAME }}
+      AZUSER_EMAIL: ${{ secrets.AZUSER_EMAIL }}
+      TEST: 'TESTTTTT'
+      NAME: 'testsetsetestet'
     steps:
         - name: scripts
-          env: # Set the secret as an input
-            AZORG: ${{ secrets.AZORG }}
-            AZUREPAT: ${{ secrets.AZUREPAT }}
-            AZUSERNAME: ${{ secrets.AZUSERNAME }}
-            AZUSER_EMAIL: ${{ secrets.AZUSER_EMAIL }}
-            TEST: 'TESTTTTT'
-            NAME: 'testsetsetestet'
           run: |
             git --version
             #git config --global user.name $AZUSERNAME
             #git config --global user.email $AZUSER_EMAIL
             echo $TEST
             echo "===================================="
-            #$url = "$AZUREPAT@dev.azure.com/$AZORG/$TEST/MirroredLearningAspire/_git/MirroredLearningAspire"
+            echo "$AZUREPAT@dev.azure.com/$AZORG/$TEST/MirroredLearningAspire/_git/MirroredLearningAspire"
             echo $url
             #git clone $url
         - name: Print name
