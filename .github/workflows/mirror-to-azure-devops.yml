@@ -16,7 +16,7 @@ jobs:
             AZUREPAT: ${{ secrets.AZUREPAT }}
             AZUSERNAME: ${{ secrets.AZUSERNAME }}
             AZUSER_EMAIL: ${{ secrets.AZUSER_EMAIL }}
-            TEST: "TESTTTTT"
+            TEST: TESTTTTT
           run: |
             git --version
             git config --global user.name $AZUSERNAME
