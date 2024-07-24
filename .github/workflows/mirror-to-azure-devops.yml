@@ -15,6 +15,7 @@ jobs:
           git config --global user.email "trungdd2811@gmail.com"
           git config --global user.name "trungdd2811"
           git --version
+          git clone https://github.com/trungdd2811/LearningAspire.git
           ls
           cd ..
           ls
