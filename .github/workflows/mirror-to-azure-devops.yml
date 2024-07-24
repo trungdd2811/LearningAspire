@@ -20,11 +20,11 @@ jobs:
         - name: scripts
           run: |
             git --version
-            #git config --global user.name $AZUSERNAME
-            #git config --global user.email $AZUSER_EMAIL
+            git config --global user.name $AZUSERNAME
+            git config --global user.email $AZUSER_EMAIL
             echo $TEST
             echo "===================================="
-            echo "$AZUREPAT@dev.azure.com/$AZORG/$TEST/MirroredLearningAspire/_git/MirroredLearningAspire"
+            $url = "$AZUREPAT@dev.azure.com/$AZORG/$TEST/MirroredLearningAspire/_git/MirroredLearningAspire"
             echo $url
             #git clone $url
         - name: Print name
