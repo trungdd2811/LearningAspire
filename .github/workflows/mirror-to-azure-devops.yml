@@ -21,7 +21,7 @@ jobs:
           ls
           cd ..
           ls
-          git clone https://yniyxfx6ij4lr7nlz7pgo3o2ricchxx6rkr6mflzzozldlpym5ra@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
+          https://trungdd2811:hpjyih4t7ohamonqyl7xtr7ztf5huqxf2bwavmbikqtnsqelkara@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
           ls
           #git fetch
           
