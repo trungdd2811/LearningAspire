@@ -9,25 +9,19 @@ jobs:
   mirror:
     name: Mirror repository to Azure DevOps
     runs-on: ubuntu-latest
-
+    environment: AzureDevOps
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          
-      - name: Setup dotnet cli
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.0.x'
-          
-      - name: Install Aspire workload
-        run: dotnet workload restore 
-        
-      - name: Build whole .net solution before mirroring
-        run: dotnet build
         
       - name: Mirror development repository to the deployement repository on Azure DevOps
         run: |
-          git config --global credential.helper manager
-          git push --mirror https://yniyxfx6ij4lr7nlz7pgo3o2ricchxx6rkr6mflzzozldlpym5ra@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
+          ls
+          cd /
+          ls
+          #git fetch
+          
+          #git config --global credential.helper manager
+          #git push --mirror https://yniyxfx6ij4lr7nlz7pgo3o2ricchxx6rkr6mflzzozldlpym5ra@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
