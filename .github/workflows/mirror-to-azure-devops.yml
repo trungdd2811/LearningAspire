@@ -27,7 +27,6 @@ jobs:
             echo "===================================="
             $url = "https://$AZUREPAT@dev.azure.com/$AZORG/$TEST/MirroredLearningAspire/_git/MirroredLearningAspire"
             echo $url
-            dir
             #git clone $url
         - name: Print name
           run: echo "Hello $NAME"
