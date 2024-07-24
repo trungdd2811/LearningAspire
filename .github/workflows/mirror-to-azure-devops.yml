@@ -24,7 +24,7 @@ jobs:
             git config --global user.email $AZUSER_EMAIL
             git config --list
             echo "===================================="
-            echo "https://${AZUSERNAME}:${AZUREPAT}@dev.azure.com/$AZORG/MirroredLearningAspire/_git/MirroredLearningAspire"
+            echo "https://${AZUSERNAME}:$AZUREPAT@dev.azure.com/$AZORG/MirroredLearningAspire/_git/MirroredLearningAspire"
             git clone "https://${AZUSERNAME}:${AZUREPAT}@dev.azure.com/$AZORG/MirroredLearningAspire/_git/MirroredLearningAspire"
         - name: Print name
           run: echo "Hello $NAME"
