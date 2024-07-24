@@ -25,6 +25,6 @@ jobs:
             echo $TEST
             echo $AZORG
             dir
-            #git clone https://trungdd2811:hpjyih4t7ohamonqyl7xtr7ztf5huqxf2bwavmbikqtnsqelkara@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
+            git clone https://$AZUSERNAME:$AZUREPAT@dev.azure.com/$AZORG/MirroredLearningAspire/_git/MirroredLearningAspire
             dir
   
