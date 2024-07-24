@@ -10,29 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: AzureDevOps
     steps:
-      - name: Setup git
-        run: |
-          git config --global user.email $env:GIT_EMAIL
-          git config --global user.name $env:GIT_USER
-          git config --global credential.helper "!f() { echo \`"username=`${GIT_USER}`npassword=`${GIT_PASS}\`"; }; f"
-        shell: pwsh
-        env:
-          GIT_USER: "trungdd2811"
-          GIT_EMAIL: "trungdd2811@gmail.com"
-          GIT_PASS: "yniyxfx6ij4lr7nlz7pgo3o2ricchxx6rkr6mflzzozldlpym5ra"
-      - name: Mirror development repository to the deployement repository on Azure DevOps
-        run: |
-          git --version
-          ls
-          cd ..
-          ls
-          cd ..
-          ls
-          git clone https://trungdd2811:hpjyih4t7ohamonqyl7xtr7ztf5huqxf2bwavmbikqtnsqelkara@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
-
-          
-          #git fetch
-          
-          #git config --global credential.helper manager
-          #git push --mirror https://yniyxfx6ij4lr7nlz7pgo3o2ricchxx6rkr6mflzzozldlpym5ra@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
-        shell: pwsh
+        - uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+        - uses: yesolutions/mirror-action@master
+          with:
+            REMOTE: 'https://trungdd2811@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire'
+            GIT_USERNAME: 'trungdd2811'
+            GIT_PASSWORD: 'hpjyih4t7ohamonqyl7xtr7ztf5huqxf2bwavmbikqtnsqelkara'
