@@ -17,6 +17,7 @@ jobs:
             AZUSERNAME: ${{ secrets.AZUSERNAME }}
             AZUSER_EMAIL: ${{ secrets.AZUSER_EMAIL }}
             TEST: 'TESTTTTT'
+            NAME: 'testsetsetestet'
           run: |
             git --version
             git config --global user.name $AZUSERNAME
@@ -31,4 +32,6 @@ jobs:
             echo $url
             dir
             #git clone $url
+        - name: Print name
+          run: echo "Hello $NAME"
   
