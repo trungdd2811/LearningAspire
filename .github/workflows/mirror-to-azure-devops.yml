@@ -23,7 +23,7 @@ jobs:
             git config --global user.name $AZUSERNAME
             git config --global user.email $AZUSER_EMAIL
             git config --list
-            echo $TEST
+            Write-Host $(TEST)
             echo $AZORG
             $url = "https://$AZUREPAT@dev.azure.com/$AZORG/MirroredLearningAspire/_git/MirroredLearningAspire"
             echo $url
