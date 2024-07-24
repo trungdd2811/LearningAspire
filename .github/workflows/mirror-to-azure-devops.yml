@@ -7,7 +7,7 @@ on:
 jobs:
   mirror:
     name: Mirror repository to Azure DevOps
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     environment: AzureDevOps
     env: # Set the secret as an input
       AZORG: ${{ secrets.AZORG }}
