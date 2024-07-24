@@ -1,7 +1,4 @@
-
-git clone https://yniyxfx6ij4lr7nlz7pgo3o2ricchxx6rkr6mflzzozldlpym5ra@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
 name: "Mirror repository to Azure DevOps"
-
 on:
   push:
     branches:
