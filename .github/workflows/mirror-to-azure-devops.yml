@@ -10,10 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     environment: AzureDevOps
     steps:
+      - name: Setup git
+        run: |
+          git config --global user.email $env:GIT_EMAIL
+          git config --global user.name $env:GIT_USER
+          git config --global credential.helper "!f() { echo \`"username=`${GIT_USER}`npassword=`${GIT_PASS}\`"; }; f"
+        shell: pwsh
+        env:
+          GIT_USER: "trungdd2811"
+          GIT_EMAIL: "trungdd2811@gmail.com"
+          GIT_PASS: "yniyxfx6ij4lr7nlz7pgo3o2ricchxx6rkr6mflzzozldlpym5ra"
       - name: Mirror development repository to the deployement repository on Azure DevOps
         run: |
-          git config --global user.email "trungdd2811@gmail.com"
-          git config --global user.name "trungdd2811"
           git --version
           git clone https://github.com/trungdd2811/LearningAspire.git
           ls
