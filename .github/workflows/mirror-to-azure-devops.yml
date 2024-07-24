@@ -13,5 +13,6 @@ jobs:
         - name: scripts
           run: |
             git --version
+            git config --list
             dir
             #git clone https://trungdd2811@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
