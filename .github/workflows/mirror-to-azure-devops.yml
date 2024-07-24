@@ -8,7 +8,7 @@ jobs:
   mirror:
     name: Mirror repository to Azure DevOps
     runs-on: ubuntu-latest
-    environment: AzureDevOps
+    #environment: AzureDevOps
     steps:
         - name: scripts
           env: # Set the secret as an input
