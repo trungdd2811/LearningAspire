@@ -11,6 +11,7 @@ jobs:
     environment: AzureDevOps
     steps:
         - name: scripts
+          shell: pwsh
           env: # Set the secret as an input
             AZORG: ${{ secrets.AZORG }}
             AZUREPAT: ${{ secrets.AZUREPAT }}
