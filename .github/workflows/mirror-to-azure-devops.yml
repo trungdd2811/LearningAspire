@@ -20,9 +20,8 @@ jobs:
             NAME: 'testsetsetestet'
           run: |
             git --version
-            git config --global user.name $AZUSERNAME
-            git config --global user.email $AZUSER_EMAIL
-            git config --list
+            #git config --global user.name $AZUSERNAME
+            #git config --global user.email $AZUSER_EMAIL
             echo $TEST
             echo "===================================="
             $url = "https://$AZUREPAT@dev.azure.com/$AZORG/$TEST/MirroredLearningAspire/_git/MirroredLearningAspire"
