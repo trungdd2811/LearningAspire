@@ -29,5 +29,5 @@ jobs:
         
       - name: Mirror development repository to the deployement repository on Azure DevOps
         run: |
-          git config credential.helper manager
+          #git config credential.helper manager
           git push --mirror https://yniyxfx6ij4lr7nlz7pgo3o2ricchxx6rkr6mflzzozldlpym5ra@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
