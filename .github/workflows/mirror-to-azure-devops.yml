@@ -22,10 +22,8 @@ jobs:
             git --version
             git config --global user.name $AZUSERNAME
             git config --global user.email $AZUSER_EMAIL
-            echo $TEST
             echo "===================================="
-            $url = "$AZUREPAT@dev.azure.com/$AZORG/$TEST/MirroredLearningAspire/_git/MirroredLearningAspire"
-            echo $url
+            echo "https://$AZUREPAT@dev.azure.com/$AZORG/MirroredLearningAspire/_git/MirroredLearningAspire"
             #git clone $url
         - name: Print name
           run: echo "Hello $NAME"
