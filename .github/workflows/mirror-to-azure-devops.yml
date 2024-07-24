@@ -11,7 +11,6 @@ jobs:
     environment: AzureDevOps
     steps:
         - name: scripts
-          shell: pwsh
           env: # Set the secret as an input
             AZORG: ${{ secrets.AZORG }}
             AZUREPAT: ${{ secrets.AZUREPAT }}
@@ -23,8 +22,8 @@ jobs:
             git config --global user.name $AZUSERNAME
             git config --global user.email $AZUSER_EMAIL
             git config --list
-            echo env.TEST
-            echo env.AZORG
+            echo $env.TEST
+            echo $env.AZORG
             echo "===================================="
             $url = "https://$AZUREPAT@dev.azure.com/$AZORG/$TEST/MirroredLearningAspire/_git/MirroredLearningAspire"
             echo $url
