@@ -24,7 +24,8 @@ jobs:
             git config --list
             echo $TEST
             echo $AZORG
+            $url = "https://${AZUSERNAME}:${AZUREPAT}@dev.azure.com/${AZORG}/MirroredLearningAspire/_git/MirroredLearningAspire"
+            echo $url
             dir
-            git clone https://${AZUSERNAME}:${AZUREPAT}@dev.azure.com/${AZORG}/MirroredLearningAspire/_git/MirroredLearningAspire
-            dir
+            git clone $url
   
