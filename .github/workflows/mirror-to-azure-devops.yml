@@ -11,11 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: AzureDevOps
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-        
       - name: Mirror development repository to the deployement repository on Azure DevOps
         run: |
           ls
