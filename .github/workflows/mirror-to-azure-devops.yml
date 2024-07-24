@@ -7,7 +7,7 @@ on:
 jobs:
   mirror:
     name: Mirror repository to Azure DevOps
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     environment: AzureDevOps
     steps:
         - name: scripts
@@ -18,7 +18,7 @@ jobs:
             git config --global user.name "trungdd2811"
             git config --global user.email "trungdd2811@gmail.com"
             git config --list
-            echo $AZUSERNAME
+            echo AZUSERNAME
             dir
             #git clone https://trungdd2811:hpjyih4t7ohamonqyl7xtr7ztf5huqxf2bwavmbikqtnsqelkara@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
             dir
