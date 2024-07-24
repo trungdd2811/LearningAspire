@@ -15,12 +15,13 @@ jobs:
     steps:
       - name: Mirror development repository to the deployement repository on Azure DevOps
         run: |
-          git clone https://yniyxfx6ij4lr7nlz7pgo3o2ricchxx6rkr6mflzzozldlpym5ra@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
+         
           ls
           cd ..
           ls
           git clone https://trungdd2811:hpjyih4t7ohamonqyl7xtr7ztf5huqxf2bwavmbikqtnsqelkara@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
           ls
+          git clone https://yniyxfx6ij4lr7nlz7pgo3o2ricchxx6rkr6mflzzozldlpym5ra@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
           #git fetch
           
           #git config --global credential.helper manager
