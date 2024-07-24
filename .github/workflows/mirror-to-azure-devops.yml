@@ -13,8 +13,8 @@ jobs:
         - name: scripts
           run: |
             git --version
-            git config user.name "trungdd2811"
-            git config user.email "trungdd2811@gmail.com"
+            git config --global user.name "trungdd2811"
+            git config --global user.email "trungdd2811@gmail.com"
             git config --list
             dir
             #git clone https://trungdd2811@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
