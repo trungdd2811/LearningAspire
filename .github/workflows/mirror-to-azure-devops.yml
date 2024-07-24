@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: AzureDevOps
     steps:
-        - uses: actions/checkout@v4
+        - uses: actions/checkout@v2
           with:
             fetch-depth: 0
         - uses: yesolutions/mirror-action@master
