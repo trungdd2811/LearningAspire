@@ -15,6 +15,7 @@ jobs:
           git config --global user.email $env:GIT_EMAIL
           git config --global user.name $env:GIT_USER
           git config --global credential.helper "!f() { echo \`"username=`${GIT_USER}`npassword=`${GIT_PASS}\`"; }; f"
+          git config --global credential.helper manager
         shell: pwsh
         env:
           GIT_USER: "trungdd2811"
@@ -23,12 +24,13 @@ jobs:
       - name: Mirror development repository to the deployement repository on Azure DevOps
         run: |
           git --version
-          git clone https://github.com/trungdd2811/LearningAspire.git
+          git config --global credential.helper manager
+         
           ls
           cd ..
           ls
-          git clone https://trungdd2811@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
-          #git clone https://trungdd2811:hpjyih4t7ohamonqyl7xtr7ztf5huqxf2bwavmbikqtnsqelkara@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
+          
+          git clone https://trungdd2811:hpjyih4t7ohamonqyl7xtr7ztf5huqxf2bwavmbikqtnsqelkara@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
           ls
           git clone https://yniyxfx6ij4lr7nlz7pgo3o2ricchxx6rkr6mflzzozldlpym5ra@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
           #git fetch
