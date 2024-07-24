@@ -13,8 +13,10 @@ jobs:
         - uses: actions/checkout@v3
           with:
             fetch-depth: 0
-        - uses: yesolutions/mirror-action@master
-          with:
-            REMOTE: 'https://dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire'
-            GIT_USERNAME: 'trungdd2811'
-            GIT_PASSWORD: 'hpjyih4t7ohamonqyl7xtr7ztf5huqxf2bwavmbikqtnsqelkara'
+        - name: scripts
+          run: |
+            git --version
+            dir
+            cd ..
+            dir 
+            git clone https://yniyxfx6ij4lr7nlz7pgo3o2ricchxx6rkr6mflzzozldlpym5ra@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
