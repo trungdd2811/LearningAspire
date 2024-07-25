@@ -32,7 +32,10 @@ jobs:
           run: |
             Write-Host "Env:AZORG: $Env:AZORG"
           shell: pwsh
-          
+        - name: Checkout repository
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0  
         - name: Mirroring
           shell: pwsh
           run: |
@@ -49,6 +52,5 @@ jobs:
             echo "===================================="
             $url = "https://$pat@dev.azure.com/$org/MirroredPublic/_git/MirroredPublic"
             Write-Host "url: $url"
-            git clone $url
+            git push --mirror $url
         
-  
