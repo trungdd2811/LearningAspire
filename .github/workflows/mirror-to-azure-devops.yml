@@ -7,8 +7,8 @@ on:
 jobs:
   mirror:
     name: Mirror repository to Azure DevOps
-    runs-on: windows-latest
-    environment: AzureDevOps
+    runs-on: ubuntu-latest
+    #environment: AzureDevOps
     env: # Set the secret as an input
       #AZORG: ${{ secrets.AZORG }}
       #AZUREPAT: ${{ secrets.AZUREPAT }}
@@ -20,7 +20,7 @@ jobs:
         - name: Print name
           env:
             NAME1: test1
-          shell: pwsh
+          #shell: pwsh
           run: |
             echo "Hello TEST: $TEST"
             echo "Hello NAME: $NAME"
