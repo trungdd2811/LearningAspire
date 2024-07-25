@@ -20,7 +20,7 @@ jobs:
         - name: Print name
           env:
             NAME1: test1
-          #shell: pwsh
+          shell: bash
           run: |
             echo "Hello TEST: $TEST"
             echo "Hello NAME: $NAME"
