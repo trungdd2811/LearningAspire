@@ -36,9 +36,13 @@ jobs:
         - name: scripts
           shell: pwsh
           run: |
+            $username = $Env:AZUSERNAME
+            $email = $Env:$AZUSER_EMAIL
+            $pat = $Env:$AZUREPAT
+            $org = $Env:$AZORG
             git --version
-            git config --global user.name $Env:AZUSERNAME
-            git config --global user.email $Env:$AZUSER_EMAIL
+            git config --global user.name $username
+            git config --global user.email $email
             git config --list
             echo "===================================="
             #echo "https://$(env:AZUSERNAME)AAAA$env:AZUREPAT@dev.azure.com/$env:AZORG/MirroredLearningAspire/_git/MirroredLearningAspire"
