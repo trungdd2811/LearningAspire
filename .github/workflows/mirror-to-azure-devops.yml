@@ -47,7 +47,7 @@ jobs:
             git config --global credential.helper manager
             git config --list
             echo "===================================="
-            $url = "https://${username}:$pat@dev.azure.com/$org/MirroredLearningAspire/_git/MirroredLearningAspire"
+            $url = "https://$pat@dev.azure.com/$org/MirroredPublic/_git/MirroredPublic"
             Write-Host "url: $url"
             git clone $url
         
