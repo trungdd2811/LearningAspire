@@ -10,10 +10,10 @@ jobs:
     runs-on: windows-latest
     environment: AzureDevOps
     env: # Set the secret as an input
-      AZORG: ${{ secrets.AZORG }}
-      AZUREPAT: ${{ secrets.AZUREPAT }}
-      AZUSERNAME: ${{ secrets.AZUSERNAME }}
-      AZUSER_EMAIL: ${{ secrets.AZUSER_EMAIL }}
+      #AZORG: ${{ secrets.AZORG }}
+      #AZUREPAT: ${{ secrets.AZUREPAT }}
+      #AZUSERNAME: ${{ secrets.AZUSERNAME }}
+      #AZUSER_EMAIL: ${{ secrets.AZUSER_EMAIL }}
       TEST: 'TESTTTTT'
       NAME: 'testsetsetestet'
     steps:
@@ -22,19 +22,20 @@ jobs:
             NAME1: test1
           shell: pwsh
           run: |
-            echo "Hello $NAME1"
-            echo "Hello $NAME"
+            echo "Hello TEST: $TEST"
+            echo "Hello NAME: $NAME"
+            echo "Hello NAME1: $NAME1"
             $name3 = 'testst name3'
-            echo "Hello $name3"
+            echo "Hello nam3: $name3"
         - name: scripts
           shell: pwsh
           run: |
             git --version
             git config --global user.name $env:AZUSERNAME
-            git config --global user.email $env:$AZUSER_EMAIL
+            #git config --global user.email $env:$AZUSER_EMAIL
             git config --list
             echo "===================================="
-            echo "https://$(env:AZUSERNAME)AAAA$env:AZUREPAT@dev.azure.com/$env:AZORG/MirroredLearningAspire/_git/MirroredLearningAspire"
+            #echo "https://$(env:AZUSERNAME)AAAA$env:AZUREPAT@dev.azure.com/$env:AZORG/MirroredLearningAspire/_git/MirroredLearningAspire"
             #git clone "https://$AZUSERNAME :$AZUREPAT@dev.azure.com/$AZORG/MirroredLearningAspire/_git/MirroredLearningAspire"
         
   
