@@ -32,6 +32,10 @@ It is easy, please see the github website to know how to create a repository
 
 ## 3 - Using Github Action to create a simple CI to mirror Github repository to Azure DevOp repository
 
+*Using Azure DevOps PAT to push changes from Github to Azure DevOps. Please be noted the big issue "Automatically revoke leaked personal access tokens": https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/manage-pats-with-policies-for-administrators?view=azure-devops#revoke-leaked-pats-automatically*
+
+If you use this generated Azure DevOps PAT from a public Github repository then it will be revoked automatically and we can not use it any more
+
 * Create a Github Action by using following codes
 
 ```yaml
