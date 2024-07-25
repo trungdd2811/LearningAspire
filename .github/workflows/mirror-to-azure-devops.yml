@@ -37,9 +37,9 @@ jobs:
           shell: pwsh
           run: |
             $username = ${Env:AZUSERNAME}
-            $email = ${Env:$AZUSER_EMAIL}
-            $pat = ${Env:$AZUREPAT}
-            $org = ${Env:$AZORG}
+            $email = ${Env:AZUSER_EMAIL}
+            $pat = ${Env:AZUREPAT}
+            $org = ${Env:AZORG}
             git --version
             git config --global user.name $username
             git config --global user.email $email
@@ -47,6 +47,6 @@ jobs:
             echo "===================================="
             $url = "https://${username}:$pat@dev.azure.com/$org/MirroredLearningAspire/_git/MirroredLearningAspire"
             Write-Host "url: $url"
-            #git clone "https://$AZUSERNAME :$AZUREPAT@dev.azure.com/$AZORG/MirroredLearningAspire/_git/MirroredLearningAspire"
+            git clone $url
         
   
