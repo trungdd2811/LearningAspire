@@ -18,8 +18,10 @@ jobs:
       NAME: 'testsetsetestet'
     steps:
         - name: Print name
+          env:
+            NAME1: test1
           shell: pwsh
-          run: echo "Hello $NAME"
+          run: echo "Hello $NAME1"
         - name: scripts
           shell: pwsh
           run: |
