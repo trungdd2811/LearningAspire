@@ -18,8 +18,10 @@ jobs:
       NAME: 'testsetsetestet'
     steps:
         - name: Print name
-          run: echo "Hello $env:NAME"
+          shell: pwsh
+          run: echo "Hello $NAME"
         - name: scripts
+          shell: pwsh
           run: |
             git --version
             git config --global user.name $env:AZUSERNAME
