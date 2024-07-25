@@ -8,12 +8,12 @@ jobs:
   mirror:
     name: Mirror repository to Azure DevOps
     runs-on: windows-latest
-    #environment: AzureDevOps
+    environment: AzureDevOps
     env: # Set the secret as an input
-      #AZORG: ${{ secrets.AZORG }}
-      #AZUREPAT: ${{ secrets.AZUREPAT }}
-      #AZUSERNAME: ${{ secrets.AZUSERNAME }}
-      #AZUSER_EMAIL: ${{ secrets.AZUSER_EMAIL }}
+      AZORG: ${{ secrets.AZORG }}
+      AZUREPAT: ${{ secrets.AZUREPAT }}
+      AZUSERNAME: ${{ secrets.AZUSERNAME }}
+      AZUSER_EMAIL: ${{ secrets.AZUSER_EMAIL }}
       TEST: 'TESTTTTT'
       NAME: 'testsetsetestet'
     steps:
@@ -30,10 +30,7 @@ jobs:
             
         - name: Test powershell
           run: |
-            Import-Module .\build\GetBuildVersion.psm1
-            Write-Host $Env:GITHUB_REF
-            $version = GetBuildVersion -VersionString $Env:GITHUB_REF
-            echo "BUILD_VERSION=$version" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+            Write-Host $Env:AZORG
           shell: pwsh
           
         - name: scripts
