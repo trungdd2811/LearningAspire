@@ -36,10 +36,10 @@ jobs:
         - name: scripts
           shell: pwsh
           run: |
-            $username = $Env:AZUSERNAME
-            $email = $Env:$AZUSER_EMAIL
-            $pat = $Env:$AZUREPAT
-            $org = $Env:$AZORG
+            $username = ${Env:AZUSERNAME}
+            $email = ${Env:$AZUSER_EMAIL}
+            $pat = ${Env:$AZUREPAT}
+            $org = ${Env:$AZORG}
             git --version
             git config --global user.name $username
             git config --global user.email $email
