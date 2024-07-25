@@ -38,7 +38,7 @@ jobs:
           run: |
             $username = ${Env:AZUSERNAME}
             $email = ${Env:AZUSER_EMAIL}
-            $pat = 'lzsqw76lfc7pd5ckc74mluxge3obapqr5mpoo2ph3i3w43fxfn6q'
+            $pat = 'bd74ocb6txp2437zaakkygi5gtydmnctdwpe7lo6zw2dqhwurhsa'
             #${Env:AZUREPAT}
             $org = ${Env:AZORG}
             git --version
