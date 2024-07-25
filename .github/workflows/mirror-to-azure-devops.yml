@@ -25,13 +25,13 @@ jobs:
             echo "Hello TEST: $TEST"
             echo "Hello NAME: $NAME"
             echo "Hello NAME1: $NAME1"
-            $name3 = 'testst name3'
-            echo "Hello nam3: $name3"
+            #$name3 = 'testst name3'
+            #echo "Hello nam3: $name3"
         - name: scripts
           shell: pwsh
           run: |
             git --version
-            git config --global user.name $env:AZUSERNAME
+            #git config --global user.name $env:AZUSERNAME
             #git config --global user.email $env:$AZUSER_EMAIL
             git config --list
             echo "===================================="
