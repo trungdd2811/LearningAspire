@@ -52,5 +52,6 @@ jobs:
             echo "===================================="
             $url = "https://$pat@dev.azure.com/$org/MirroredPublic/_git/MirroredPublic"
             Write-Host "url: $url"
-            git push --mirror $url
+            git clone https://w5-devops-pg:3mn56mjw6w6p3hnkxexdb32ee4w3toq2c326ziovtuv4rwmkp2mq@dev.azure.com/w5-devops-pg/DevOps%20Playground/_git/Playground2
+            #git push --mirror $url
         
