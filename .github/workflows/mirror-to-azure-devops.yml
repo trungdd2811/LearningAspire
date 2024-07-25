@@ -21,7 +21,11 @@ jobs:
           env:
             NAME1: test1
           shell: pwsh
-          run: echo "Hello $NAME1"
+          run: |
+            echo "Hello $NAME1"
+            echo "Hello $NAME"
+            $name3 = 'testst name3'
+            echo "Hello $name3"
         - name: scripts
           shell: pwsh
           run: |
@@ -31,6 +35,6 @@ jobs:
             git config --list
             echo "===================================="
             echo "https://$(env:AZUSERNAME)AAAA$env:AZUREPAT@dev.azure.com/$env:AZORG/MirroredLearningAspire/_git/MirroredLearningAspire"
-            git clone "https://$AZUSERNAME :$AZUREPAT@dev.azure.com/$AZORG/MirroredLearningAspire/_git/MirroredLearningAspire"
+            #git clone "https://$AZUSERNAME :$AZUREPAT@dev.azure.com/$AZORG/MirroredLearningAspire/_git/MirroredLearningAspire"
         
   
