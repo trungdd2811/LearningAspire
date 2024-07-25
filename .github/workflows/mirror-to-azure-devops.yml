@@ -44,7 +44,7 @@ jobs:
             git --version
             git config --global user.name $username
             git config --global user.email $email
-            git config --global credential.helper store
+            git config --global credential.helper manager
             git config --list
             echo "===================================="
             $url = "https://${username}:$pat@dev.azure.com/$org/MirroredLearningAspire/_git/MirroredLearningAspire"
