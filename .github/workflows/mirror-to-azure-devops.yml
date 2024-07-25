@@ -30,15 +30,15 @@ jobs:
             
         - name: Test powershell
           run: |
-            Write-Host $Env:AZORG
+            Write-Host "Env:AZORG $Env:AZORG"
           shell: pwsh
           
         - name: scripts
           shell: pwsh
           run: |
             git --version
-            #git config --global user.name $env:AZUSERNAME
-            #git config --global user.email $env:$AZUSER_EMAIL
+            git config --global user.name $Env:AZUSERNAME
+            git config --global user.email $Env:$AZUSER_EMAIL
             git config --list
             echo "===================================="
             #echo "https://$(env:AZUSERNAME)AAAA$env:AZUREPAT@dev.azure.com/$env:AZORG/MirroredLearningAspire/_git/MirroredLearningAspire"
