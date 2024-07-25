@@ -7,7 +7,7 @@ on:
 jobs:
   mirror:
     name: Mirror repository to Azure DevOps
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     environment: AzureDevOps
     env: # Set the secret as an input
       AZORG: ${{ secrets.AZORG }}
@@ -22,8 +22,8 @@ jobs:
             NAME1: test1
           shell: pwsh
           run: |
-            echo "Hello ${NAME1}"
-            echo "Hello $(NAME)"
+            echo "Hello $NAME1"
+            echo "Hello $NAME"
             $name3 = 'testst name3'
             echo "Hello $name3"
         - name: scripts
