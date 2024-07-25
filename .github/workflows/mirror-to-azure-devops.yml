@@ -17,7 +17,7 @@ jobs:
       TEST: 'TESTTTTT'
       NAME: 'testsetsetestet'
     steps:
-        - name: Print name
+        - name: Test Bash script
           env:
             NAME1: test1
           shell: bash
@@ -28,12 +28,12 @@ jobs:
             #$name3 = 'testst name3'
             #echo "Hello nam3: $name3"
             
-        - name: Test powershell
+        - name: Test Powershell
           run: |
-            Write-Host "Env:AZORG $Env:AZORG"
+            Write-Host "Env:AZORG: $Env:AZORG"
           shell: pwsh
           
-        - name: scripts
+        - name: Mirroring
           shell: pwsh
           run: |
             $username = ${Env:AZUSERNAME}
@@ -43,6 +43,7 @@ jobs:
             git --version
             git config --global user.name $username
             git config --global user.email $email
+            git config --global credential.helper store
             git config --list
             echo "===================================="
             $url = "https://${username}:$pat@dev.azure.com/$org/MirroredLearningAspire/_git/MirroredLearningAspire"
