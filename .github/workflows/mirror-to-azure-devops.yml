@@ -45,7 +45,8 @@ jobs:
             git config --global user.email $email
             git config --list
             echo "===================================="
-            #echo "https://$(env:AZUSERNAME)AAAA$env:AZUREPAT@dev.azure.com/$env:AZORG/MirroredLearningAspire/_git/MirroredLearningAspire"
+            $url = "https://${username}:$pat@dev.azure.com/$org/MirroredLearningAspire/_git/MirroredLearningAspire"
+            Write-Host "url: $url"
             #git clone "https://$AZUSERNAME :$AZUREPAT@dev.azure.com/$AZORG/MirroredLearningAspire/_git/MirroredLearningAspire"
         
   
