@@ -63,6 +63,6 @@ jobs:
 
             echo "push to remote origin"
             git branch --set-upstream-to=origin/master master
-            git pull
-            git push --set-upstream origin "$mirroredBranch"
+            git fetch
+            git push origin "$mirroredBranch"
         
