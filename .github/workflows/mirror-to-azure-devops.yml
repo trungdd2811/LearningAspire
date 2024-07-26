@@ -52,6 +52,7 @@ jobs:
             ls
             url="https://$AZURE_PAT@dev.azure.com/$AZURE_ORG/$destinationRepo/_git/$destinationRepo"
             git clone $url
+            cd "$destinationRepo"
             git checkout -B $mirroredBranch
             
             echo "copy new changes from source repo to destination repo"
