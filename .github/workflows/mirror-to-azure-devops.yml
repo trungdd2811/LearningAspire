@@ -56,12 +56,12 @@ jobs:
             git remote add origin $url
             
             echo "create a local branch master"
-            git checkout -B master
+            git checkout -B "$mirroredBranch"
         
             echo "add the mirrored codes to the local branch"
             git add .
             git commit -m "mirror repo on -$(date '+%Y-%m-%d-%H-%M-%S')"
         
             echo "push to remote origin"
-            git push --set-upstream origin $mirroredBranch --force
+            git push --set-upstream origin "$mirroredBranch" --force
         
