@@ -54,14 +54,15 @@ jobs:
             url="https://$AZURE_PAT@dev.azure.com/$AZURE_ORG/MirroredLearningAspire/_git/MirroredLearningAspire"
             echo "url: $url"
             git remote add origin $url
-            git pull
             echo "create a local branch master"
             git checkout -B "$mirroredBranch"
-        
+            
             echo "add the mirrored codes to the local branch"
             git add .
             git commit -m "mirror repo on -$(date '+%Y-%m-%d-%H-%M-%S')"
 
             echo "push to remote origin"
+            git branch --set-upstream-to=origin/master master
+            git pull
             git push --set-upstream origin "$mirroredBranch"
         
