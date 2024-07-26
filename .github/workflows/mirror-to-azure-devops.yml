@@ -59,8 +59,8 @@ jobs:
 
             echo "add the mirrored codes to the destination branch"
             cd "$destinationRepo" 
-            git config --global user.email "$AZURE_EMAIL"
-            git config --global user.name "$AZURE_USER"
+            git config user.email "$AZURE_EMAIL"
+            git config user.name "$AZURE_USER"
             git add .
             git commit -m "mirror repo on -$(date '+%Y-%m-%d-%H-%M-%S')"
 
