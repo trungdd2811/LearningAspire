@@ -36,13 +36,16 @@ jobs:
         - name: Mirroring
           shell: pwsh
           run: |
-            $pat = ${Env:AZURE_PAT}
-            $org = ${Env:AZURE_ORG}
-            git --version
-            git config --list
+            dir
+            cd ..
+            dir
+            #$pat = ${Env:AZURE_PAT}
+            #$org = ${Env:AZURE_ORG}
+            #git --version
+            #git config --list
             echo "===================================="
-            $url = "https://$pat@dev.azure.com/$org/MirroredLearningAspire/_git/MirroredLearningAspire"
-            Write-Host "url: $url"
+            #$url = "https://$pat@dev.azure.com/$org/MirroredLearningAspire/_git/MirroredLearningAspire"
+            #Write-Host "url: $url"
             #git clone https://tw4sw3fnjfbhtrjs32rh76dpowr5i5jxhecxbfetv2brvj2dgs6q@dev.azure.com/trungdd2811/MirroredLearningAspire/_git/MirroredLearningAspire
-            git push --mirror $url
+            #git push --mirror $url
         
