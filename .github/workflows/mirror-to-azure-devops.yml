@@ -55,7 +55,7 @@ jobs:
             
             echo "copy new changes from source repo to destination repo"
             cd ..
-            cp -rf ./LearningAspire "./$destinationRepo"
+            cp -rf ./LearningAspire/* "./$destinationRepo"
 
             echo "add the mirrored codes to the destination branch"
             cd "$destinationRepo" 
