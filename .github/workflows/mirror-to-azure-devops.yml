@@ -63,5 +63,5 @@ jobs:
             git commit -m "mirror repo on -$(date '+%Y-%m-%d-%H-%M-%S')"
         
             echo "push to remote origin"
-            git push --set-upstream origin "$mirroredBranch" --force
+            git push --set-upstream origin "$mirroredBranch"
         
