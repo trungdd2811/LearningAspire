@@ -7,7 +7,7 @@ on:
 jobs:
   mirror:
     name: Mirror repository to Azure DevOps
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     env: # Set the secret as an input
       AZURE_PAT: ${{ secrets.AZURE_PAT }}
       AZURE_ORG: ${{ secrets.AZORG }}
@@ -46,10 +46,8 @@ jobs:
             echo "destination repository: $destinationRepo"
             echo "remove .git folder"
             rm -rf .git
-            ls
             echo "clone destination repository"
             cd ..
-            ls
             url="https://$AZURE_PAT@dev.azure.com/$AZURE_ORG/$destinationRepo/_git/$destinationRepo"
             git clone $url
             cd "$destinationRepo"
