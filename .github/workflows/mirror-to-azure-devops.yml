@@ -39,7 +39,7 @@ jobs:
           shell: bash
           run: |
             echo "checkout to the branch should be mirrored"
-            mirroredBranch = "master"
+            mirroredBranch="master"
             git checkout -B $mirroredBranch
         
             echo "remove .git folder"
