@@ -40,29 +40,27 @@ jobs:
           run: |
             echo "checkout to the branch should be mirrored"
             mirroredBranch="master"
+            destinationRepo="MirroredLearningAspire"
             git checkout -B $mirroredBranch
-        
+            echo "mirrored branch: $mirroredBranch"
+            echo "destination repository: $destinationRepo"
             echo "remove .git folder"
             rm -rf .git
-            echo "init git again"
-            git init
-            git config --global user.email $AZURE_EMAIL
-            git config --global user.name $AZURE_USER
-            git config --global init.defaultBranch main
-            echo "add remote origin to AzureDevOps repository"
-            echo "===================================="
-            url="https://$AZURE_PAT@dev.azure.com/$AZURE_ORG/MirroredLearningAspire/_git/MirroredLearningAspire"
-            echo "url: $url"
-            git remote add origin $url
-            echo "create a local branch master"
-            git checkout -B "$mirroredBranch"
+
+            echo "clone destination repository"
+            url="https://$AZURE_PAT@dev.azure.com/$AZURE_ORG/$destinationRepo/_git/$destinationRepo"
+            git clone $url
+            git checkout -B $mirroredBranch
             
-            echo "add the mirrored codes to the local branch"
+            echo "copy new changes from source repo to destination repo"
+            cp -rf ./LearningAspire "./$destinationRepo"
+
+            echo "add the mirrored codes to the destination branch"
+            cd "$destinationRepo" 
             git add .
             git commit -m "mirror repo on -$(date '+%Y-%m-%d-%H-%M-%S')"
 
             echo "push to remote origin"
-            git branch --set-upstream-to=origin/master master
-            git fetch
-            git push origin "$mirroredBranch"
+            git push
+  
         
