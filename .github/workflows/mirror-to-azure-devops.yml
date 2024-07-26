@@ -46,13 +46,16 @@ jobs:
             echo "destination repository: $destinationRepo"
             echo "remove .git folder"
             rm -rf .git
-
+            ls
             echo "clone destination repository"
+            cd ..
+            ls
             url="https://$AZURE_PAT@dev.azure.com/$AZURE_ORG/$destinationRepo/_git/$destinationRepo"
             git clone $url
             git checkout -B $mirroredBranch
             
             echo "copy new changes from source repo to destination repo"
+            cd ..
             cp -rf ./LearningAspire "./$destinationRepo"
 
             echo "add the mirrored codes to the destination branch"
