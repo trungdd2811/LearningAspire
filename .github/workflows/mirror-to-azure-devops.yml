@@ -51,7 +51,7 @@ jobs:
             git config --global init.defaultBranch main
             echo "add remote origin to AzureDevOps repository"
             echo "===================================="
-            url="https://$AZURE_PAT@dev.azure.com/$AZURE_PAT/MirroredLearningAspire/_git/MirroredLearningAspire"
+            url="https://$AZURE_PAT@dev.azure.com/$AZURE_ORG/MirroredLearningAspire/_git/MirroredLearningAspire"
             echo "url: $url"
             git remote add origin $url
             
